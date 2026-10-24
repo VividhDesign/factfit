@@ -36,6 +36,8 @@ export interface ClaimOptions {
   gapsOk?: boolean;
   /** Tools named in the profile's skills count as evidence. Off for bullets: a bullet may only name tools its own facts name. */
   skillsCount?: boolean;
+  /** Text whose numbers may appear in the claim without being facts, e.g. the job post for a match note ("needs CGPA 8.5"). Numbers only: it never proves a tool, rank or date. */
+  allowNumbersFrom?: string;
 }
 
 export interface GuardInput {
@@ -132,8 +134,9 @@ export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = 
   const lower = text.toLowerCase();
 
   // G2
+  const allowed = opts.allowNumbersFrom ? normalize(opts.allowNumbersFrom) : "";
   for (const t of uniq(numberTokens(text))) {
-    if (hasNumber(ev.text, t)) continue;
+    if (hasNumber(ev.text, t) || (allowed && hasNumber(allowed, t))) continue;
     const unit = /[%×]$/.exec(t)?.[0];
     const near = uniq(numberTokens(ev.text).filter((e) => (unit ? e.endsWith(unit) : e.split(".")[0] === t.split(".")[0])));
     v("G2", t, near.length ? `'${t}': your facts say ${near.slice(0, 3).join(", ")}.` : `'${t}': not in your cited facts.`);

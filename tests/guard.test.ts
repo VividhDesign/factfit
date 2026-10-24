@@ -311,3 +311,22 @@ describe("bullets may only name tools their own facts name", () => {
     }
   });
 });
+
+describe("allowNumbersFrom (match notes)", () => {
+  const note = "The job asks for a CGPA of 8.5; yours is 8.73/10.";
+  const run = (opts = {}) => guardClaim({ where: "match[0]", text: note, factIds: ["edu.cgpa"] }, profile, [], { gapsOk: true, ...opts }).map((v) => v.token);
+  it("flags a number that is only in the job text, by default", () => {
+    expect(run()).toContain("8.5");
+  });
+  it("allows it when the job text has it", () => {
+    expect(run({ allowNumbersFrom: "Minimum CGPA 8.5 required." })).toEqual([]);
+  });
+  it("keeps checking the other numbers", () => {
+    const t = guardClaim({ where: "match[0]", text: "CGPA 9.1 beats the 8.5 bar.", factIds: ["edu.cgpa"] }, profile, [], { allowNumbersFrom: "CGPA 8.5" });
+    expect(t.map((v) => v.token)).toEqual(["9.1"]);
+  });
+  it("does not let the job text prove a tool, rank or date", () => {
+    const t = guardClaim({ where: "match[0]", text: "Knows Kubernetes and won in Mar 2019.", factIds: ["edu.cgpa"] }, profile, [], { allowNumbersFrom: "Kubernetes, won, Mar 2019" });
+    expect(t.map((v) => v.rule).sort()).toEqual(["G3", "G4", "G5"]);
+  });
+});

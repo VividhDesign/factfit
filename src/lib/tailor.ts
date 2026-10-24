@@ -2,8 +2,9 @@
  * The tailor pipeline: analyze -> compose -> guard -> repair once -> block what still fails.
  * The LLM writes; deterministic code (lib/guard.ts) decides what stays.
  */
-import { guard, guardClaim, type Violation } from "./guard";
+import { guard, guardClaim, type ClaimOptions, type Violation } from "./guard";
 import { generateObject, type GenerateObject } from "./llm";
+import { dropSentences } from "./sentences";
 import { ANALYZE_SYSTEM, analyzeUser, COMPOSE_SYSTEM, composeUser, REPAIR_SYSTEM, repairUser } from "./prompts";
 import {
   AnalysisSchema,
@@ -71,7 +72,16 @@ interface Checked {
   verified: number;
 }
 
-function check(result: ComposeResult, profile: Profile, keywords: string[], recruiter: boolean): Checked {
+interface Ctx {
+  profile: Profile;
+  keywords: string[];
+  recruiter: boolean;
+  /** The job post: its numbers may appear in match notes ("needs CGPA 8.5"). */
+  jobText: string;
+}
+
+function check(result: ComposeResult, ctx: Ctx): Checked {
+  const { profile, keywords, recruiter, jobText } = ctx;
   const g = guard(
     {
       entryOrder: result.entryOrder,
@@ -87,7 +97,7 @@ function check(result: ComposeResult, profile: Profile, keywords: string[], recr
   const noteViolations = result.match.flatMap((m, i) =>
     m.status === "missing" || !m.note.trim()
       ? []
-      : guardClaim({ where: `match[${i}]`, text: m.note, factIds: m.factIds }, profile, keywords, { gapsOk: true }),
+      : guardClaim({ where: `match[${i}]`, text: m.note, factIds: m.factIds }, profile, keywords, { gapsOk: true, allowNumbersFrom: jobText }),
   );
   return { violations: [...g.violations, ...noteViolations], claims: g.claims, verified: g.verified };
 }
@@ -125,7 +135,7 @@ function applyFixes(r: ComposeResult, fixes: Repair["fixes"]): ComposeResult {
 }
 
 /** Removes everything the violations point at. Returns what was removed. */
-function removeFailing(r: ComposeResult, vs: Violation[]): { result: TailorResult; blocked: BlockedItem[] } {
+function removeFailing(r: ComposeResult, vs: Violation[], ctx: Ctx, wholeClaims = false): { result: TailorResult; blocked: BlockedItem[] } {
   const groups = byWhere(vs);
   const blocked: BlockedItem[] = [];
   const failed = (w: string) => groups.has(w);
@@ -137,15 +147,39 @@ function removeFailing(r: ComposeResult, vs: Violation[]): { result: TailorResul
     block(`bullet[${i}]`, b.text);
     return false;
   });
-  const paragraphs = r.coverNote.paragraphs.filter((p, i) => {
-    if (!failed(`cover[${i}]`)) return true;
-    block(`cover[${i}]`, p.text);
-    return false;
+  /**
+   * A paragraph or the email that fails loses only its failing sentences. It goes whole only when every
+   * sentence fails, when it cites no valid fact, or when asked to (the safety pass).
+   */
+  const trim = (where: string, text: string, factIds: string[], opts: ClaimOptions): string | null => {
+    const vsHere = groups.get(where) ?? [];
+    if (wholeClaims || vsHere.some((v) => v.rule === "G1")) {
+      block(where, text);
+      return null;
+    }
+    const reasonsOf = new Map<string, string[]>();
+    const { kept, dropped } = dropSentences(text, (sentence) => {
+      const found = guardClaim({ where, text: sentence, factIds }, ctx.profile, ctx.keywords, opts).filter((v) => CLAIM_RULES.has(v.rule));
+      if (found.length) reasonsOf.set(sentence.trim(), found.map((v) => v.message));
+      return found.length > 0;
+    });
+    if (dropped.length === 0) {
+      block(where, text); // the violation is not in any one sentence: drop the whole claim
+      return null;
+    }
+    for (const d of dropped) blocked.push({ where, text: d, reasons: reasonsOf.get(d) ?? [] });
+    return kept || null;
+  };
+
+  const paragraphs = r.coverNote.paragraphs.flatMap((p, i) => {
+    if (!failed(`cover[${i}]`)) return [p];
+    const kept = trim(`cover[${i}]`, p.text, p.factIds, { gapsOk: true });
+    return kept ? [{ ...p, text: kept }] : [];
   });
   let email: TailorResult["email"] = r.email;
   if (failed("email")) {
-    block("email", r.email.body);
-    email = null;
+    const kept = trim("email", r.email.body, r.email.factIds, { gapsOk: true, extraEvidence: prefsText(ctx.profile, ctx.recruiter) });
+    email = kept ? { ...r.email, body: kept } : null;
   }
   const match = r.match.map((m, i) => {
     if (!failed(`match[${i}]`)) return m;
@@ -182,6 +216,7 @@ export async function tailor(input: TailorInput, gen: GenerateObject = generateO
   timings.analyze = ms(t);
   const keywords = [...new Set(analysis.requirements.flatMap((r) => r.keywords))];
   const recruiter = analysis.kind === "recruiter_email";
+  const ctx: Ctx = { profile, keywords, recruiter, jobText: input.jobText };
 
   // 2. compose, from verified facts only
   const steerBlocked = screenSteer(steer, profile);
@@ -196,7 +231,7 @@ export async function tailor(input: TailorInput, gen: GenerateObject = generateO
 
   // 3. guard
   t = performance.now();
-  const first = check(draft, profile, keywords, recruiter);
+  const first = check(draft, ctx);
   timings.guard += ms(t);
 
   // 4. repair once
@@ -215,7 +250,7 @@ export async function tailor(input: TailorInput, gen: GenerateObject = generateO
 
     current = applyFixes(draft, fix.fixes);
     t = performance.now();
-    second = check(current, profile, keywords, recruiter);
+    second = check(current, ctx);
     timings.guard += ms(t);
     for (const [where, vs] of claimGroups) {
       const before = read(draft, where)?.text ?? "";
@@ -228,13 +263,17 @@ export async function tailor(input: TailorInput, gen: GenerateObject = generateO
 
   // 5. block what still fails
   t = performance.now();
-  const { result, blocked } = removeFailing(current, second.violations);
-  const final = check(
-    { ...result, email: result.email ?? { subject: "", body: "", factIds: [] } },
-    profile,
-    keywords,
-    recruiter,
-  );
+  const asChecked = (r: TailorResult) => ({ ...r, email: r.email ?? { subject: "", body: "", factIds: [] } });
+  let { result, blocked } = removeFailing(current, second.violations, ctx);
+  let final = check(asChecked(result), ctx);
+  if (final.violations.length) {
+    // Safety pass: if trimming sentences left something the whole-claim check still rejects, drop those claims whole.
+    const again = removeFailing(asChecked(result), final.violations, ctx, true);
+    result = again.result;
+    blocked = [...blocked, ...again.blocked];
+    final = check(asChecked(result), ctx);
+  }
+  if (result.email && !result.email.body.trim()) result = { ...result, email: null };
   timings.guard += ms(t);
   if (final.violations.length) {
     throw new Error(`Internal error: the guard still rejects the final result (${final.violations[0].message}).`);

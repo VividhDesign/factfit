@@ -4,6 +4,7 @@ import { ProfileSchema } from "@/lib/schemas";
 import { tailor, screenSteer } from "@/lib/tailor";
 import { AnalysisSchema, ComposeSchema, RepairSchema, TailorInputSchema, type Analysis, type ComposeResult, type Repair } from "@/lib/tailor-schemas";
 import type { GenerateObject } from "@/lib/llm";
+import { COMPOSE_SYSTEM, REPAIR_SYSTEM } from "@/lib/prompts";
 
 const profile = ProfileSchema.parse(seedJson);
 const factText = (id: string) => profile.facts.find((f) => f.id === id)!.text;
@@ -172,5 +173,97 @@ describe("small model slips", () => {
     const r = await tailor(input(), fake(draft({ bullets: [slip] })).gen);
     expect(r.result.bullets[0].entryId).toBe("proj-strata");
     expect(r.guard.blocked).toEqual([]);
+  });
+});
+
+describe("a failing sentence is dropped, not the whole paragraph or email", () => {
+  const cites = ["strata.bench.full", "dhuaan.award"];
+  const nothingToRepair = { fixes: [{ where: "email", drop: true, text: "", factIds: [] }] };
+
+  it("keeps the rest of the email when one sentence says 'I won runner-up'", async () => {
+    const email = {
+      subject: "Hi",
+      body: "I built Strata in C++. I won runner-up at the WeMakeDevs × AWS hackathon. I would welcome a conversation.",
+      factIds: cites,
+    };
+    const r = await tailor(input(), fake(draft({ email }), nothingToRepair).gen);
+    expect(r.result.email?.body).toBe("I built Strata in C++. I would welcome a conversation.");
+    const b = r.guard.blocked.find((x) => x.where === "email")!;
+    expect(b.text).toBe("I won runner-up at the WeMakeDevs × AWS hackathon.");
+    expect(b.reasons.join(" ")).toMatch(/won/);
+  });
+
+  it("does the same for a cover-note paragraph", async () => {
+    const cover = { text: "I built Strata in C++. I won runner-up at the hackathon.", factIds: cites };
+    const r = await tailor(input(), fake(draft({ coverNote: { paragraphs: [cover] } }), { fixes: [{ where: "cover[0]", drop: true, text: "", factIds: [] }] }).gen);
+    expect(r.result.coverNote.paragraphs.map((p) => p.text)).toEqual(["I built Strata in C++."]);
+    expect(r.guard.blocked.map((x) => x.text)).toEqual(["I won runner-up at the hackathon."]);
+  });
+
+  it("keeps numbered answers in order and drops only the bad line", async () => {
+    const email = { subject: "Hi", body: "1. I built Strata in C++.\n2. I won runner-up at the hackathon.\n3. My notice period is [fill in].", factIds: cites };
+    const r = await tailor(input(), fake(draft({ email }), nothingToRepair).gen);
+    expect(r.result.email?.body).toBe("1. I built Strata in C++.\n3. My notice period is [fill in].");
+  });
+
+  it("removes the whole claim only when every sentence fails", async () => {
+    const email = { subject: "Hi", body: "I won runner-up. I know Kubernetes.", factIds: cites };
+    const r = await tailor(input(), fake(draft({ email }), nothingToRepair).gen);
+    expect(r.result.email).toBeNull();
+    expect(r.guard.blocked.filter((x) => x.where === "email")).toHaveLength(2);
+  });
+
+  it("still lets the repair fix the sentence", async () => {
+    const email = { subject: "Hi", body: "I built Strata in C++. I won runner-up at the hackathon.", factIds: cites };
+    const fixed = { fixes: [{ where: "email", drop: false, text: "I built Strata in C++. I was runner-up at the hackathon.", factIds: cites }] };
+    const r = await tailor(input(), fake(draft({ email }), fixed).gen);
+    expect(r.result.email?.body).toBe("I built Strata in C++. I was runner-up at the hackathon.");
+    expect(r.guard.blocked.filter((x) => x.where === "email")).toEqual([]);
+  });
+});
+
+describe("match notes may use numbers from the job text", () => {
+  const cgpaNote = (note: string) => ({
+    match: [{ reqId: "r1", status: "met" as const, factIds: ["edu.cgpa"], note }],
+  });
+  const dropIt = { fixes: [{ where: "match[0]", drop: true, text: "", factIds: [] }] };
+  const jobWith85 = { profile, jobText: "Graduate role. A minimum CGPA of 8.5 is required. Python and C++ preferred.", steer: undefined };
+
+  it("does not flag 8.5 when the job asks for it", async () => {
+    const r = await tailor(jobWith85, fake(draft(cgpaNote("The job asks for a CGPA of 8.5 or more; yours is 8.73/10."))).gen);
+    expect(r.guard.blocked).toEqual([]);
+    expect(r.result.match[0].note).toMatch(/8\.5/);
+  });
+
+  it("still flags a number that is in neither the job text nor the facts", async () => {
+    const r = await tailor(jobWith85, fake(draft(cgpaNote("Your CGPA of 9.1 clears the bar.")), dropIt).gen);
+    expect(r.guard.blocked.map((b) => b.where)).toContain("match[0]");
+  });
+
+  it("does not let the job text prove a tool or a rank in a note", async () => {
+    const job = { profile, jobText: "We use Kubernetes. Hackathon winners preferred. Need 3 years.", steer: undefined };
+    const r = await tailor(job, fake(draft(cgpaNote("You know Kubernetes and won hackathons.")), dropIt).gen);
+    expect(r.guard.blocked.find((b) => b.where === "match[0]")?.reasons.join(" ")).toMatch(/kubernetes|won/);
+  });
+});
+
+describe("prompts", () => {
+  it("tell the writer and the repair how to say runner-up", () => {
+    for (const p of [COMPOSE_SYSTEM, REPAIR_SYSTEM]) {
+      expect(p).toMatch(/was runner-up/);
+      expect(p).toMatch(/finished as runner-up/);
+      expect(p).toMatch(/never "won"/);
+    }
+  });
+  it("tell the repair to change only the failing sentence", () => {
+    expect(REPAIR_SYSTEM).toMatch(/only the (?:failing )?sentence/i);
+  });
+});
+
+describe("removed email stays removed", () => {
+  it("is null, not an empty email, after the safety pass", async () => {
+    const email = { subject: "Hi", body: "I won runner-up.", factIds: ["dhuaan.award"] };
+    const r = await tailor(input(), fake(draft({ email }), { fixes: [{ where: "email", drop: true, text: "", factIds: [] }] }).gen);
+    expect(r.result.email).toBeNull();
   });
 });

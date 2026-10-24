@@ -26,12 +26,13 @@ Rules
 3. Prefer an approved bullet unchanged: set rewritten=false, copy exactly one fact's text, cite only that fact.
 4. Rewrite (rewritten=true) only to surface a requirement keyword that the cited facts already support. Keep every number exactly as written (11–15×, 97.03%, 1.9×). Never introduce a number, date, award, rank, employer, tool or technology that is not in the cited facts. Never round or soften a number (not "~2×").
 5. Name a tool, language or service only if it appears in the cited facts or in <skills>.
-6. Use dates exactly as the facts give them. The research internship has ended. Do not write "Present" or "currently".
-7. Resume: one page. entryOrder lists the entry ids to show (research, projects, open source, achievements), most relevant first. Leave out education: it is added automatically. At most 12 bullets in total, each at most 230 characters, one to three per entry, chosen and ordered to match the requirements.
-8. skills: reorder or filter the groups and items in <skills>. Never add an item.
-9. match: one object per requirement, in order. met = a cited fact proves it. partial = a closely related fact. missing = no evidence: factIds empty and the note says plainly what is missing and names the closest real experience, if any.
-10. coverNote: three short paragraphs, at most 150 words in total, first person, plain and specific, no clichés. Each paragraph cites facts.
-11. email: a subject and a body of at most 130 words, citing facts.
+6. Ranks and awards: say only what the facts say. If a fact says Runner-up, write "was runner-up" or "finished as runner-up", never "won", "winner" or "won runner-up".
+7. Use dates exactly as the facts give them. The research internship has ended. Do not write "Present" or "currently".
+8. Resume: one page. entryOrder lists the entry ids to show (research, projects, open source, achievements), most relevant first. Leave out education: it is added automatically. At most 12 bullets in total, each at most 230 characters, one to three per entry, chosen and ordered to match the requirements.
+9. skills: reorder or filter the groups and items in <skills>. Never add an item.
+10. match: one object per requirement, in order. met = a cited fact proves it. partial = a closely related fact. missing = no evidence: factIds empty and the note says plainly what is missing and names the closest real experience, if any.
+11. coverNote: three short paragraphs, at most 150 words in total, first person, plain and specific, no clichés. Each paragraph cites facts.
+12. email: a subject and a body of at most 130 words, citing facts.
    - kind "job": a short cold outreach asking for a conversation.
    - kind "recruiter_email": a reply that answers every recruiter question in order. Use <prefs> values where they are given and write [fill in] where they are not. For a skill the candidate lacks, say so honestly in one sentence and point to the closest real experience (e.g. "No hands-on Azure experience yet, but my AWS Lambda and Step Functions work maps closely."). Never invent a notice period, salary or availability.
 Reply with JSON only, matching the schema.`;
@@ -70,7 +71,9 @@ export const REPAIR_SYSTEM = `A deterministic fact checker rejected some claims 
 For each, either rewrite it so that every number, date, rank, award and tool is one the cited facts support, or drop it.
 - Rewrite: drop=false, text = the corrected claim, factIds = the facts that support it (ids from <facts> only).
 - Drop: drop=true, text = "", factIds = [] when the claim cannot be said truthfully with the facts.
-Keep numbers exactly as the facts write them. Never add anything new. Do not mention a tool that is not in the cited facts, except in an honest gap sentence ("No hands-on X experience yet").
+Change only the sentence that failed: keep every other sentence word for word.
+Keep numbers exactly as the facts write them. Never add anything new.
+Ranks: if a fact says Runner-up, say the candidate "was runner-up" or "finished as runner-up", never "won", "winner" or "won runner-up". Do not mention a tool that is not in the cited facts, except in an honest gap sentence ("No hands-on X experience yet").
 Return one fix per listed claim, using the same "where" value. JSON only.`;
 
 export function repairUser(args: {
