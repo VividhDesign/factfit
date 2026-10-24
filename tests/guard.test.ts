@@ -280,3 +280,14 @@ describe("tool names with different spacing", () => {
     expect(rulesFor("Used Hugging Face models.", ["research.ised.paper"]).violations).toEqual([]);
   });
 });
+
+describe("list markers", () => {
+  it("does not read '1.' and '2)' at the start of a line as numbers", () => {
+    const text = "1. I am comfortable working fully remote.\n2) I built Strata in C++.\n   4. Based in [fill in].";
+    expect(guardClaim({ where: "email", text, factIds: ["strata.bench.full"] }, profile, [], { gapsOk: true })).toEqual([]);
+  });
+  it("still checks numbers inside the sentence", () => {
+    const text = "1. I cut latency by 40%.";
+    expect(guardClaim({ where: "email", text, factIds: ["strata.bench.full"] }, profile).map((v) => v.token)).toEqual(["40%"]);
+  });
+});

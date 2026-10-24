@@ -125,7 +125,8 @@ export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = 
   if (out.length) return out;
 
   const ev = buildEvidence(facts, profile, opts.extraEvidence);
-  const text = normalize(claim.text);
+  // "1. ", "2) " at the start of a line number a list; they are not claims.
+  const text = normalize(claim.text.replace(/(^|\n)[ \t]*\d{1,2}[.)][ \t]+/g, "$1"));
   const lower = text.toLowerCase();
 
   // G2

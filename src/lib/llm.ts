@@ -65,6 +65,15 @@ const anthropic: Provider = {
 
 // ---------- Gemini (plain REST, no extra dependency) ----------
 
+/** Retries Gemini's transient 429/500/503 twice, like the Anthropic SDK does for Claude. */
+async function fetchWithRetry(url: string, init: RequestInit): Promise<Response> {
+  for (let attempt = 0; ; attempt++) {
+    const res = await fetch(url, init);
+    if (![429, 500, 503].includes(res.status) || attempt >= 2) return res;
+    await new Promise((r) => setTimeout(r, 5000 * (attempt + 1)));
+  }
+}
+
 const gemini: Provider = {
   async complete(schema, opts, extra) {
     const key = process.env.GEMINI_API_KEY;
@@ -73,7 +82,7 @@ const gemini: Provider = {
     const { $schema: _ignored, ...jsonSchema } = z.toJSONSchema(schema) as Record<string, unknown>;
     void _ignored;
     const turns = [{ role: "user", content: opts.user }, ...extra];
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+    const res = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
       method: "POST",
       headers: { "content-type": "application/json", "x-goog-api-key": key },
       body: JSON.stringify({
