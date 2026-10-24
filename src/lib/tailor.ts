@@ -44,9 +44,12 @@ function prefsText(profile: Profile, recruiter: boolean): string | undefined {
 /** Deterministic tidy-ups before the guard: approved bullets are copied verbatim, the page is capped. */
 function sanitize(draft: ComposeResult, profile: Profile, warnings: string[]): ComposeResult {
   const byId = new Map(profile.facts.map((f) => [f.id, f]));
+  const entryIds = new Set(profile.entries.map((e) => e.id));
   let bullets = draft.bullets.map((b) => {
     const only = b.factIds.length === 1 ? byId.get(b.factIds[0]) : undefined;
-    return !b.rewritten && only?.status === "verified" ? { ...b, text: only.text } : b;
+    // A bullet filed under a made-up entry goes back under its fact's entry.
+    const entryId = !entryIds.has(b.entryId) && only ? only.entryId : b.entryId;
+    return !b.rewritten && only?.status === "verified" ? { ...b, entryId, text: only.text } : { ...b, entryId };
   });
   if (bullets.length > MAX_BULLETS) {
     warnings.push(`Kept the first ${MAX_BULLETS} of ${bullets.length} bullets to fit one page.`);

@@ -82,7 +82,7 @@ interface Evidence {
 
 /** A sentence that admits a gap rather than claiming a skill. */
 const GAP_SENTENCE =
-  /\b(?:no|little|limited|zero|without)\s+(?:[\w-]+\s+){0,3}?(?:experience|exposure)\b|\bnot yet\b|\bhaven'?t\b|\bhave not\b|\byet to\b|\bnew to\b|\b(?:keen|eager|excited|happy|ready) to learn\b/;
+  /\b(?:no|little|limited|zero|without)\s+(?:[\w-]+\s+){0,8}?(?:experience|exposure)\b|\b(?:do not|don'?t) have\b|\bnot yet\b|\bhaven'?t\b|\bhave not\b|\byet to\b|\bnew to\b|\b(?:keen|eager|excited|happy|ready) to learn\b/;
 
 function buildEvidence(facts: Fact[], profile: Profile, extra = ""): Evidence {
   const parts: string[] = extra ? [normalize(extra)] : [];

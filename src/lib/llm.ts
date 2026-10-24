@@ -83,10 +83,12 @@ const gemini: Provider = {
           responseMimeType: "application/json",
           responseJsonSchema: jsonSchema,
           maxOutputTokens: opts.maxTokens ?? 16000,
+          // Flash models can skip thinking, which keeps a run under 30 s; the guard checks the output anyway.
+          ...(/flash/.test(model) ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
         },
       }),
     });
-    if (!res.ok) throw new LlmError(`Gemini error ${res.status}: ${(await res.text()).slice(0, 300)}`);
+    if (!res.ok) throw new LlmError(`Gemini error ${res.status}: ${(await res.text()).slice(0, 900)}`);
     const data = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
     const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("");
     if (!text) throw new LlmError("Gemini returned no text.");

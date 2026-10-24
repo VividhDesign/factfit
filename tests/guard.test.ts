@@ -257,6 +257,9 @@ describe("gaps and prefs in prose", () => {
     expect(cover("No hands-on Azure experience yet, but my AWS Lambda work maps closely.")).toEqual([]);
     expect(cover("I haven't used Kubernetes in production.")).toEqual([]);
   });
+  it("accepts a long gap sentence naming two tools", () => {
+    expect(cover("No hands-on Azure Machine Learning or Power BI experience yet. I don't have Terraform exposure either.")).toEqual([]);
+  });
   it("still blocks the same tool when it is claimed", () => {
     expect(cover("I deployed it on Azure and I know Kubernetes.")).toContain("G4");
   });
@@ -268,5 +271,12 @@ describe("gaps and prefs in prose", () => {
       guardClaim({ where: "email", text: "My notice period is 30 days.", factIds: ["dhuaan.pipeline"] }, profile, [], { gapsOk: true, extraEvidence: extra }).map((v) => v.rule);
     expect(rules()).toContain("G2");
     expect(rules("Notice period: 30 days")).toEqual([]);
+  });
+});
+
+describe("tool names with different spacing", () => {
+  it("treats 'Hugging Face' and 'HuggingFace' as the same tool", () => {
+    expect(profile.skills.some((g) => g.items.includes("HuggingFace"))).toBe(true); // the skill is spelled without a space
+    expect(rulesFor("Used Hugging Face models.", ["research.ised.paper"]).violations).toEqual([]);
   });
 });

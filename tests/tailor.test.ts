@@ -165,3 +165,12 @@ describe("input limits", () => {
     expect(TailorInputSchema.safeParse({ ...ok, jobText: "hi" }).success).toBe(false);
   });
 });
+
+describe("small model slips", () => {
+  it("files a bullet whose entryId is a fact id under that fact's entry", async () => {
+    const slip = { entryId: "strata.bench.full", factIds: ["strata.bench.full"], text: "x", rewritten: false };
+    const r = await tailor(input(), fake(draft({ bullets: [slip] })).gen);
+    expect(r.result.bullets[0].entryId).toBe("proj-strata");
+    expect(r.guard.blocked).toEqual([]);
+  });
+});

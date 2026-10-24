@@ -27,6 +27,6 @@ export const LEXICON: string[] = [...new Set(Object.values(GROUPS).flatMap((g) =
 
 /** Regex that finds `term` as a whole word (digits may follow, so "c++" matches "c++17"). */
 export function termRegex(term: string): RegExp {
-  const esc = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const esc = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ /g, "[ -]?"); // "hugging face" also matches "huggingface"
   return new RegExp(`(?<![a-z0-9+#])${esc}(?![a-z+#])`, "i");
 }
