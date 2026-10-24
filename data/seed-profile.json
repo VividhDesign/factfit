@@ -1,0 +1,1160 @@
+{
+  "version": 1,
+  "name": "Vividh Yadav",
+  "links": [
+    {
+      "label": "vividh-yadav",
+      "url": "https://linkedin.com/in/vividh-yadav-866a44380/",
+      "icon": "faLinkedin"
+    },
+    {
+      "label": "VividhDesign",
+      "url": "https://github.com/VividhDesign",
+      "icon": "faGithub"
+    },
+    {
+      "label": "LeetCode",
+      "url": "https://leetcode.com/u/DoNotFear/",
+      "icon": "faCode"
+    },
+    {
+      "label": "Kaggle",
+      "url": "https://www.kaggle.com/thevman",
+      "icon": "faKaggle"
+    }
+  ],
+  "entries": [
+    {
+      "id": "edu-bitm",
+      "section": "education",
+      "title": "Birla Institute of Technology, Mesra",
+      "location": "Ranchi, India",
+      "dates": "Aug 2023 -- May 2027",
+      "subtitle": "B.Tech in Artificial Intelligence & Machine Learning — CGPA: 8.73/10",
+      "headingLatex": "\\resumeSubheading\n      {Birla Institute of Technology, Mesra}{Ranchi, India}\n      {B.Tech in Artificial Intelligence \\& Machine Learning --- CGPA: 8.73/10}{Aug 2023 -- May 2027}"
+    },
+    {
+      "id": "edu-school",
+      "section": "education",
+      "title": "St. Joseph's College, Allahabad",
+      "location": "Allahabad, India",
+      "dates": "2022 / 2020",
+      "subtitle": "Class XII — ISC Board — 91.25% | Class X — ICSE Board — 87.16%",
+      "headingLatex": "\\resumeSubheading\n      {St. Joseph's College, Allahabad}{Allahabad, India}\n      {Class XII --- ISC Board --- 91.25\\% $|$ Class X --- ICSE Board --- 87.16\\%}{2022 / 2020}"
+    },
+    {
+      "id": "research-bitm",
+      "section": "research",
+      "title": "Undergraduate Research Intern — Deep Learning & Temporal Architectures",
+      "org": "Birla Institute of Technology, Mesra",
+      "location": "Ranchi, India",
+      "dates": "Jan 2026 -- Jul 2026",
+      "subtitle": "Supervisor: Prof. Saikat Chakraborty",
+      "headingLatex": "\\resumeSubheading\n      {Undergraduate Research Intern --- Deep Learning \\& Temporal Architectures}{Ranchi, India}\n      {Birla Institute of Technology, Mesra --- Supervisor: Prof. Saikat Chakraborty}{Jan 2026 -- Jul 2026}"
+    },
+    {
+      "id": "proj-dhuaan",
+      "section": "projects",
+      "title": "Dhuaan — Smoke Forecasting on AWS",
+      "subtitle": "Runner-up, WeMakeDevs × AWS",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/VividhDesign/dhuaan"
+        },
+        {
+          "label": "Live",
+          "url": "https://main.d300fn6sn0z3go.amplifyapp.com"
+        }
+      ],
+      "headingLatex": "\\resumeProjectHeading\n          {\\textbf{Dhuaan --- Smoke Forecasting on AWS} $|$ \\textbf{\\faTrophy\\ Runner-up, WeMakeDevs $\\times$ AWS}}{\\href{https://github.com/VividhDesign/dhuaan}{\\faGithub\\ GitHub} $|$ \\href{https://main.d300fn6sn0z3go.amplifyapp.com}{\\faExternalLink*\\ Live}}"
+    },
+    {
+      "id": "proj-strata",
+      "section": "projects",
+      "title": "Strata — Vector Database in C++",
+      "subtitle": "C++17, SIMD, pybind11, REST",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/VividhDesign/strata"
+        }
+      ],
+      "headingLatex": "\\resumeProjectHeading\n          {\\textbf{Strata --- Vector Database in C++} $|$ \\emph{C++17, SIMD, pybind11, REST}}{\\href{https://github.com/VividhDesign/strata}{\\faGithub\\ GitHub}}"
+    },
+    {
+      "id": "proj-evident",
+      "section": "projects",
+      "title": "Evident — Search & RAG System with Evaluation",
+      "subtitle": "Python, SciPy, PyTorch, Streamlit",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/VividhDesign/evident"
+        },
+        {
+          "label": "Live",
+          "url": "https://evident-rag.streamlit.app/"
+        }
+      ],
+      "headingLatex": "\\resumeProjectHeading\n          {\\textbf{Evident --- Search \\& RAG System with Evaluation} $|$ \\emph{Python, SciPy, PyTorch, Streamlit}}{\\href{https://github.com/VividhDesign/evident}{\\faGithub\\ GitHub} $|$ \\href{https://evident-rag.streamlit.app/}{\\faExternalLink*\\ Live}}"
+    },
+    {
+      "id": "proj-snaplink",
+      "section": "projects",
+      "title": "SnapLink — URL Shortener & Analytics",
+      "subtitle": "Node.js, Express, React, MongoDB, Redis",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/VividhDesign/URL-Shortener"
+        },
+        {
+          "label": "Live",
+          "url": "https://url-shortener-peach-five.vercel.app/"
+        }
+      ],
+      "headingLatex": "\\resumeProjectHeading\n          {\\textbf{SnapLink --- URL Shortener \\& Analytics} $|$ \\emph{Node.js, Express, React, MongoDB, Redis}}{\\href{https://github.com/VividhDesign/URL-Shortener}{\\faGithub\\ GitHub} $|$ \\href{https://url-shortener-peach-five.vercel.app/}{\\faExternalLink*\\ Live}}"
+    },
+    {
+      "id": "oss",
+      "section": "opensource",
+      "title": "USearch (4K+ stars, C++) | sktime (10K+ stars) | skpro (Python)",
+      "links": [
+        {
+          "label": "PRs",
+          "url": "https://github.com/search?q=author:VividhDesign+is:pr+is:merged+-user:VividhDesign&type=pullrequests"
+        }
+      ],
+      "headingLatex": "\\resumeProjectHeading\n        {\\textbf{USearch} (4K+ stars, C++) $|$ \\textbf{sktime} (10K+ stars) $|$ \\textbf{skpro} \\emph{(Python)}}{\\href{https://github.com/search?q=author:VividhDesign+is:pr+is:merged+-user:VividhDesign\\string&type=pullrequests}{\\faGithub\\ PRs}}"
+    },
+    {
+      "id": "proj-overlay",
+      "section": "projects",
+      "title": "OverlayAi — Floating AI Assistant",
+      "subtitle": "Electron, Node.js, JavaScript, Ollama, Gemini, Groq",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/VividhDesign/OverlayAi"
+        }
+      ]
+    },
+    {
+      "id": "achievements",
+      "section": "achievements",
+      "title": "Achievements"
+    }
+  ],
+  "facts": [
+    {
+      "id": "edu.cgpa",
+      "entryId": "edu-bitm",
+      "text": "CGPA 8.73/10 in B.Tech in Artificial Intelligence & Machine Learning, Birla Institute of Technology, Mesra.",
+      "tags": [
+        "CGPA",
+        "education",
+        "B.Tech"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:education[0]; confirmed by user"
+    },
+    {
+      "id": "edu.grad",
+      "entryId": "edu-bitm",
+      "text": "B.Tech in Artificial Intelligence & Machine Learning, Birla Institute of Technology, Mesra, Aug 2023 – May 2027.",
+      "tags": [
+        "education",
+        "B.Tech",
+        "graduation"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:education[0]; confirmed by user"
+    },
+    {
+      "id": "edu.class12",
+      "entryId": "edu-school",
+      "text": "Class XII, ISC Board: 91.25% (2022), St. Joseph's College, Allahabad.",
+      "tags": [
+        "education",
+        "school"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:education[1]; confirmed by user"
+    },
+    {
+      "id": "edu.class10",
+      "entryId": "edu-school",
+      "text": "Class X, ICSE Board: 87.16% (2020), St. Joseph's College, Allahabad.",
+      "tags": [
+        "education",
+        "school"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:education[1]; confirmed by user"
+    },
+    {
+      "id": "research.internship",
+      "entryId": "research-bitm",
+      "text": "Undergraduate Research Intern, Deep Learning & Temporal Architectures, Birla Institute of Technology, Mesra, Jan 2026 – Jul 2026 (ended), supervised by Prof. Saikat Chakraborty.",
+      "tags": [
+        "research",
+        "internship",
+        "deep learning"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:research[0]; confirmed by user"
+    },
+    {
+      "id": "dhuaan.award",
+      "entryId": "proj-dhuaan",
+      "text": "Runner-up, WeMakeDevs × AWS (Environmental Hacks, Bharat Builds 2026), led a team of 4.",
+      "tags": [
+        "hackathon",
+        "runner-up",
+        "WeMakeDevs",
+        "AWS",
+        "leadership"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[0]; confirmed by user"
+    },
+    {
+      "id": "oss.count",
+      "entryId": "oss",
+      "text": "4 merged pull requests across USearch, sktime and skpro.",
+      "tags": [
+        "open source",
+        "pull requests"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:open-source heading; confirmed by user"
+    },
+    {
+      "id": "research.ised.paper",
+      "entryId": "research-bitm",
+      "text": "Paper accepted at 14th IEEE ISED 2026: transformer-based pre-impact fall detection on wearable IMU data (KFall); designed Adaptive Temporal Windowing for an 8:1 class imbalance (+1.58% balanced accuracy).",
+      "latex": "\\textbf{Paper accepted at 14th IEEE ISED 2026:} transformer-based pre-impact fall detection on wearable \\textbf{IMU data} (KFall); designed \\textbf{Adaptive Temporal Windowing} for an \\textbf{8:1 class imbalance} (+1.58\\% balanced accuracy).",
+      "tags": [
+        "IEEE ISED 2026",
+        "paper",
+        "Transformers",
+        "IMU",
+        "time series",
+        "class imbalance",
+        "Adaptive Temporal Windowing",
+        "deep learning",
+        "KFall"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:research-experience[0].item[0]"
+    },
+    {
+      "id": "research.ensemble",
+      "entryId": "research-bitm",
+      "text": "Late-fusion ensemble of a 1D-CNN and a Conformer: 97.03% balanced accuracy, 96.2% sensitivity and 628 ms lead time on KFall, best among the methods compared.",
+      "latex": "Late-fusion ensemble of a \\textbf{1D-CNN} and a \\textbf{Conformer}: \\textbf{97.03\\%} balanced accuracy, \\textbf{96.2\\%} sensitivity and \\textbf{628\\,ms} lead time on KFall, best among the methods compared.",
+      "tags": [
+        "1D-CNN",
+        "Conformer",
+        "late fusion",
+        "ensemble",
+        "balanced accuracy",
+        "KFall",
+        "deep learning"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:research-experience[0].item[1]"
+    },
+    {
+      "id": "research.ised.paper.full",
+      "entryId": "research-bitm",
+      "text": "Paper accepted at 14th IEEE ISED 2026: co-authored \"A transformer-based architecture for pre-impact fall detection with highly imbalanced data\", modeling wearable IMU time series (KFall). Engineered Adaptive Temporal Windowing to adjust sliding strides under 8:1 class imbalance (+1.58% balanced accuracy).",
+      "latex": "\\textbf{Paper accepted at 14th IEEE ISED 2026:} co-authored ``A transformer-based architecture for pre-impact fall detection with highly imbalanced data'', modeling wearable \\textbf{IMU time series} (KFall). Engineered \\textbf{Adaptive Temporal Windowing} to adjust sliding strides under 8:1 class imbalance (\\textbf{+1.58\\%} balanced accuracy).",
+      "tags": [
+        "IEEE ISED 2026",
+        "paper",
+        "Transformers",
+        "IMU",
+        "time series",
+        "class imbalance",
+        "Adaptive Temporal Windowing",
+        "deep learning",
+        "KFall"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:RES_FULL[0]"
+    },
+    {
+      "id": "research.ensemble.full",
+      "entryId": "research-bitm",
+      "text": "Designed a late-fusion ensemble of a 1D-CNN (local impact features) and a Conformer (global temporal attention), achieving 97.03% balanced accuracy, 96.2% sensitivity and 628 ms lead time on KFall (beyond airbag deployment thresholds).",
+      "latex": "Designed a late-fusion ensemble of a \\textbf{1D-CNN} (local impact features) and a \\textbf{Conformer} (global temporal attention), achieving \\textbf{97.03\\%} balanced accuracy, \\textbf{96.2\\%} sensitivity and \\textbf{628\\,ms} lead time on KFall (beyond airbag deployment thresholds).",
+      "tags": [
+        "1D-CNN",
+        "Conformer",
+        "late fusion",
+        "ensemble",
+        "attention",
+        "balanced accuracy",
+        "KFall",
+        "deep learning"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:RES_FULL[1]"
+    },
+    {
+      "id": "research.short",
+      "entryId": "research-bitm",
+      "text": "IEEE ISED 2026 paper (accepted): transformer + 1D-CNN late-fusion ensemble for pre-impact fall detection on wearable IMU time series under 8:1 class imbalance; 97.03% balanced accuracy, 628 ms lead time; Adaptive Temporal Windowing added +1.58%.",
+      "latex": "\\textbf{IEEE ISED 2026 paper (accepted):} transformer + 1D-CNN late-fusion ensemble for pre-impact fall detection on wearable IMU time series under 8:1 class imbalance; \\textbf{97.03\\%} balanced accuracy, \\textbf{628\\,ms} lead time; Adaptive Temporal Windowing added \\textbf{+1.58\\%}.",
+      "tags": [
+        "IEEE ISED 2026",
+        "paper",
+        "Transformers",
+        "1D-CNN",
+        "ensemble",
+        "IMU",
+        "time series",
+        "class imbalance",
+        "deep learning"
+      ],
+      "roles": [
+        "swe",
+        "hft"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:RES_SHORT[0]"
+    },
+    {
+      "id": "research.quant.paper",
+      "entryId": "research-bitm",
+      "text": "IEEE ISED 2026 paper (accepted): modeled noisy, 8:1 class-imbalanced wearable sensor time series; designed Adaptive Temporal Windowing (+1.58% balanced accuracy) and a 1D-CNN + Conformer late-fusion ensemble.",
+      "latex": "\\textbf{IEEE ISED 2026 paper (accepted):} modeled noisy, \\textbf{8:1 class-imbalanced} wearable sensor time series; designed \\textbf{Adaptive Temporal Windowing} (+1.58\\% balanced accuracy) and a 1D-CNN + Conformer late-fusion ensemble.",
+      "tags": [
+        "IEEE ISED 2026",
+        "paper",
+        "time series",
+        "class imbalance",
+        "Adaptive Temporal Windowing",
+        "1D-CNN",
+        "Conformer",
+        "ensemble",
+        "statistics"
+      ],
+      "roles": [
+        "quant-research"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:RES_QUANT[0]"
+    },
+    {
+      "id": "research.quant.results",
+      "entryId": "research-bitm",
+      "text": "Reached 97.03% balanced accuracy and 96.2% sensitivity with 628 ms prediction lead time on KFall, evaluated with balanced metrics rather than accuracy because of the skew.",
+      "latex": "Reached \\textbf{97.03\\%} balanced accuracy and \\textbf{96.2\\%} sensitivity with \\textbf{628\\,ms} prediction lead time on KFall, evaluated with balanced metrics rather than accuracy because of the skew.",
+      "tags": [
+        "balanced accuracy",
+        "sensitivity",
+        "KFall",
+        "time series",
+        "evaluation",
+        "class imbalance"
+      ],
+      "roles": [
+        "quant-research"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:RES_QUANT[1]"
+    },
+    {
+      "id": "dhuaan.pipeline",
+      "entryId": "proj-dhuaan",
+      "text": "Serverless pipeline (EventBridge, Step Functions, Lambda, S3, DynamoDB, SAM): every 3 h ingests NASA fire and wind data, runs a NumPy trajectory model and sends Telegram/SNS alerts.",
+      "latex": "\\textbf{Serverless pipeline} (EventBridge, Step Functions, Lambda, S3, DynamoDB, SAM): every \\textbf{3 h} ingests NASA fire and wind data, runs a NumPy \\textbf{trajectory model} and sends Telegram/SNS alerts.",
+      "tags": [
+        "AWS",
+        "EventBridge",
+        "Step Functions",
+        "Lambda",
+        "S3",
+        "DynamoDB",
+        "SAM",
+        "serverless",
+        "NumPy",
+        "Telegram",
+        "SNS",
+        "data pipelines"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[0].item[0]"
+    },
+    {
+      "id": "dhuaan.backtest",
+      "entryId": "proj-dhuaan",
+      "text": "Backtested on 31 Oct 2025 (1,209 fires): forecast smoke reaching north-west Delhi, consistent with CPCB readings; top 25 fire clusters → 62% of modelled Delhi smoke.",
+      "latex": "Backtested on 31 Oct 2025 (\\textbf{1,209 fires}): forecast smoke reaching north-west Delhi, consistent with CPCB readings; top \\textbf{25} fire clusters $\\rightarrow$ \\textbf{62\\%} of modelled Delhi smoke.",
+      "tags": [
+        "backtesting",
+        "forecasting",
+        "trajectory model",
+        "NASA",
+        "CPCB",
+        "data analysis"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[0].item[1]"
+    },
+    {
+      "id": "strata.durability",
+      "entryId": "proj-strata",
+      "text": "Added crash recovery (CRC-checked write-ahead log + snapshots), Mongo-style metadata filters with an inverted index, an HTTP/JSON server with Prometheus metrics, Python bindings, and CI on Linux and macOS.",
+      "latex": "Added \\textbf{crash recovery} (CRC-checked write-ahead log + snapshots), \\textbf{Mongo-style metadata filters} with an inverted index, an \\textbf{HTTP/JSON server} with Prometheus metrics, Python bindings, and CI on Linux and macOS.",
+      "tags": [
+        "write-ahead log",
+        "crash recovery",
+        "snapshots",
+        "metadata filtering",
+        "inverted index",
+        "HTTP server",
+        "JSON",
+        "Prometheus",
+        "Python bindings",
+        "CI",
+        "Linux",
+        "macOS",
+        "C++"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[1].item[1]"
+    },
+    {
+      "id": "strata.bench.full",
+      "entryId": "proj-strata",
+      "text": "Built a C++ vector database around an HNSW index; on 1M-vector SIFT it matches FAISS and runs 1.9× faster than hnswlib at equal recall (6,597 queries/s at 0.99 recall, one core) and builds the index in 20.5 s.",
+      "latex": "Built a C++ vector database around an \\textbf{HNSW} index; on 1M-vector SIFT it \\textbf{matches FAISS and runs 1.9$\\times$ faster than hnswlib at equal recall} (6,597 queries/s at 0.99 recall, one core) and builds the index in \\textbf{20.5\\,s}.",
+      "tags": [
+        "C++",
+        "HNSW",
+        "vector database",
+        "FAISS",
+        "hnswlib",
+        "benchmark",
+        "SIFT",
+        "performance"
+      ],
+      "roles": [
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA[0]"
+    },
+    {
+      "id": "strata.simd.full",
+      "entryId": "proj-strata",
+      "text": "Hand-wrote ARM NEON / x86 AVX2 distance kernels (11–15× faster than scalar) and a parallel graph build with 1-byte per-node spinlocks (9.6× on 15 threads), verified race-free with ThreadSanitizer.",
+      "latex": "Hand-wrote \\textbf{ARM NEON / x86 AVX2} distance kernels (\\textbf{11--15$\\times$} faster than scalar) and a parallel graph build with 1-byte per-node spinlocks (\\textbf{9.6$\\times$ on 15 threads}), verified race-free with ThreadSanitizer.",
+      "tags": [
+        "SIMD",
+        "NEON",
+        "AVX2",
+        "multithreading",
+        "spinlock",
+        "ThreadSanitizer",
+        "performance",
+        "C++"
+      ],
+      "roles": [
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA[1]"
+    },
+    {
+      "id": "strata.durability.full",
+      "entryId": "proj-strata",
+      "text": "Engineered durability (CRC-checked write-ahead log, atomic snapshots, crash recovery verified with kill -9), metadata filtering and a REST server sustaining 76K req/s at 2 ms p99; Python bindings via pybind11.",
+      "latex": "Engineered durability (CRC-checked \\textbf{write-ahead log}, atomic snapshots, crash recovery verified with \\texttt{kill -9}), metadata filtering and a \\textbf{REST server sustaining 76K req/s at 2\\,ms p99}; Python bindings via pybind11.",
+      "tags": [
+        "write-ahead log",
+        "crash recovery",
+        "snapshots",
+        "metadata filtering",
+        "REST server",
+        "pybind11",
+        "Python bindings",
+        "C++"
+      ],
+      "roles": [
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA[2]"
+    },
+    {
+      "id": "strata.bench.hft",
+      "entryId": "proj-strata",
+      "text": "Built an HNSW vector index in C++17 that matches FAISS and runs 1.9× faster than hnswlib at equal recall on 1M SIFT vectors (6,597 queries/s at 0.99 recall on one core, 0.15 ms per query).",
+      "latex": "Built an \\textbf{HNSW} vector index in C++17 that \\textbf{matches FAISS and runs 1.9$\\times$ faster than hnswlib at equal recall} on 1M SIFT vectors (6,597 queries/s at 0.99 recall on \\textbf{one core}, 0.15\\,ms per query).",
+      "tags": [
+        "C++17",
+        "HNSW",
+        "FAISS",
+        "hnswlib",
+        "benchmark",
+        "SIFT",
+        "latency",
+        "performance",
+        "single core"
+      ],
+      "roles": [
+        "hft"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_HFT[0]"
+    },
+    {
+      "id": "strata.cache.hft",
+      "entryId": "proj-strata",
+      "text": "Hand-wrote NEON/AVX2 kernels with 4 independent accumulators to hide FMA latency (11–15× over scalar); 64-byte-aligned node layout co-locating links and vectors, plus software prefetch, to cut cache misses.",
+      "latex": "Hand-wrote \\textbf{NEON/AVX2} kernels with 4 independent accumulators to hide FMA latency (\\textbf{11--15$\\times$} over scalar); 64-byte-aligned node layout co-locating links and vectors, plus software prefetch, to cut cache misses.",
+      "tags": [
+        "SIMD",
+        "NEON",
+        "AVX2",
+        "FMA",
+        "cache",
+        "prefetch",
+        "memory layout",
+        "performance"
+      ],
+      "roles": [
+        "hft"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_HFT[1]"
+    },
+    {
+      "id": "strata.locks.hft",
+      "entryId": "proj-strata",
+      "text": "Parallel build with 1-byte atomic spinlocks (acquire/release ordering) and a deadlock-free locking protocol: 9.6× on 15 threads, ThreadSanitizer-clean; concurrent queries need no per-node locks under a shared reader lock.",
+      "latex": "Parallel build with \\textbf{1-byte atomic spinlocks} (acquire/release ordering) and a deadlock-free locking protocol: \\textbf{9.6$\\times$ on 15 threads}, ThreadSanitizer-clean; concurrent queries need no per-node locks under a shared reader lock.",
+      "tags": [
+        "atomics",
+        "spinlock",
+        "memory ordering",
+        "multithreading",
+        "ThreadSanitizer",
+        "concurrency",
+        "performance"
+      ],
+      "roles": [
+        "hft"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_HFT[2]"
+    },
+    {
+      "id": "strata.server.hft",
+      "entryId": "proj-strata",
+      "text": "Cut server p99 from 52 ms to under 5 ms (76K req/s) by fixing keep-alive and thread-pool sizing; tripled filtered throughput (3.5K→10.8K req/s) with sorted posting lists; CRC-checked WAL with crash recovery.",
+      "latex": "Cut server \\textbf{p99 from 52\\,ms to under 5\\,ms} (76K req/s) by fixing keep-alive and thread-pool sizing; tripled filtered throughput (3.5K$\\to$10.8K req/s) with sorted posting lists; CRC-checked WAL with crash recovery.",
+      "tags": [
+        "latency",
+        "p99",
+        "REST server",
+        "thread pool",
+        "throughput",
+        "write-ahead log",
+        "crash recovery",
+        "performance"
+      ],
+      "roles": [
+        "hft"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_HFT[3]"
+    },
+    {
+      "id": "strata.bench.ml",
+      "entryId": "proj-strata",
+      "text": "Wrote the vector database that serves Evident's dense retrieval: C++ HNSW index that matches FAISS and runs 1.9× faster than hnswlib at equal recall on 1M SIFT vectors (6,597 queries/s at 0.99 recall).",
+      "latex": "Wrote the \\textbf{vector database} that serves Evident's dense retrieval: C++ \\textbf{HNSW} index that matches FAISS and runs 1.9$\\times$ faster than hnswlib at equal recall on 1M SIFT vectors (6,597 queries/s at 0.99 recall).",
+      "tags": [
+        "vector database",
+        "HNSW",
+        "FAISS",
+        "hnswlib",
+        "retrieval",
+        "SIFT",
+        "Evident",
+        "C++"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_ML[0]"
+    },
+    {
+      "id": "strata.kernels.ml",
+      "entryId": "proj-strata",
+      "text": "NEON/AVX2 distance kernels (11–15× over scalar), parallel build (9.6× on 15 threads), metadata filters, CRC-checked write-ahead log and pybind11 bindings with zero-copy NumPy input.",
+      "latex": "\\textbf{NEON/AVX2} distance kernels (11--15$\\times$ over scalar), parallel build (9.6$\\times$ on 15 threads), metadata filters, CRC-checked write-ahead log and pybind11 bindings with zero-copy NumPy input.",
+      "tags": [
+        "SIMD",
+        "NEON",
+        "AVX2",
+        "multithreading",
+        "metadata filtering",
+        "write-ahead log",
+        "pybind11",
+        "NumPy"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_ML[1]"
+    },
+    {
+      "id": "strata.bench.qr",
+      "entryId": "proj-strata",
+      "text": "C++ HNSW vector index matching FAISS and 1.9× faster than hnswlib at equal recall on 1M SIFT vectors; benchmarked as recall–throughput curves over an ef sweep, with a +10-point recall ablation of the neighbour-selection heuristic.",
+      "latex": "C++ \\textbf{HNSW} vector index matching FAISS and 1.9$\\times$ faster than hnswlib at equal recall on 1M SIFT vectors; benchmarked as recall--throughput curves over an \\texttt{ef} sweep, with a +10-point recall ablation of the neighbour-selection heuristic.",
+      "tags": [
+        "HNSW",
+        "FAISS",
+        "hnswlib",
+        "benchmark",
+        "recall",
+        "ablation",
+        "SIFT",
+        "C++"
+      ],
+      "roles": [
+        "quant-research"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_QR[0]"
+    },
+    {
+      "id": "strata.kernels.qr",
+      "entryId": "proj-strata",
+      "text": "NEON/AVX2 kernels (11–15× over scalar), parallel build (9.6× on 15 threads, TSan-clean), crash-safe write-ahead log.",
+      "latex": "NEON/AVX2 kernels (11--15$\\times$ over scalar), parallel build (9.6$\\times$ on 15 threads, TSan-clean), crash-safe write-ahead log.",
+      "tags": [
+        "SIMD",
+        "NEON",
+        "AVX2",
+        "multithreading",
+        "ThreadSanitizer",
+        "write-ahead log"
+      ],
+      "roles": [
+        "quant-research"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:STRATA_QR[1]"
+    },
+    {
+      "id": "evident.bm25",
+      "entryId": "proj-evident",
+      "text": "BM25 from scratch on a sparse matrix (matches Pyserini ±0.002), embeddings served by Strata and tuned hybrid fusion: nDCG@10 +8–74% over BM25 on 3 benchmarks.",
+      "latex": "\\textbf{BM25 from scratch} on a sparse matrix (matches Pyserini $\\pm$0.002), embeddings served by Strata and \\textbf{tuned hybrid fusion}: \\textbf{nDCG@10 +8--74\\%} over BM25 on 3 benchmarks.",
+      "tags": [
+        "BM25",
+        "Pyserini",
+        "sparse matrix",
+        "hybrid retrieval",
+        "fusion",
+        "nDCG",
+        "Strata",
+        "benchmarks",
+        "information retrieval"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[2].item[0]"
+    },
+    {
+      "id": "evident.ablation",
+      "entryId": "proj-evident",
+      "text": "Ablation study picked the fastest design: 6.9 ms per query over 57K docs, as rerankers were worse and 28–170× slower; answers checked by an LLM judge (925/936 claims grounded); 16 tests + CI.",
+      "latex": "Ablation study picked the fastest design: \\textbf{6.9\\,ms} per query over 57K docs, as rerankers were worse and 28--170$\\times$ slower; answers checked by an \\textbf{LLM judge} (\\textbf{925/936} claims grounded); \\textbf{16 tests} + CI.",
+      "tags": [
+        "ablation",
+        "rerankers",
+        "latency",
+        "LLM-as-judge",
+        "evaluation",
+        "tests",
+        "CI"
+      ],
+      "status": "needs_review",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[2].item[1]",
+      "alternatives": [
+        {
+          "value": "28–170×",
+          "files": 3
+        },
+        {
+          "value": "30–170×",
+          "files": 14
+        }
+      ]
+    },
+    {
+      "id": "evident.hybrid.full",
+      "entryId": "proj-evident",
+      "text": "Built a hybrid RAG retriever (from-scratch BM25 + embeddings served by Strata, dev-tuned fusion) improving nDCG@10 by 8–74% over BM25 on 3 BEIR datasets; my BM25 matches Pyserini's scores within ±0.002.",
+      "latex": "Built a hybrid RAG retriever (from-scratch \\textbf{BM25} + embeddings served by \\textbf{Strata}, dev-tuned fusion) improving \\textbf{nDCG@10 by 8--74\\%} over BM25 on 3 BEIR datasets; my BM25 matches Pyserini's scores within \\textbf{$\\pm$0.002}.",
+      "tags": [
+        "RAG",
+        "BM25",
+        "hybrid retrieval",
+        "embeddings",
+        "Strata",
+        "nDCG",
+        "BEIR",
+        "Pyserini",
+        "information retrieval"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT[0]"
+    },
+    {
+      "id": "evident.ablation.full",
+      "entryId": "proj-evident",
+      "text": "Ran ablations showing naive rank fusion and cross-encoder rerankers underperform the tuned hybrid at 30–170× the latency; shipped the faster pipeline (6.9 ms retrieval over 57K documents).",
+      "latex": "Ran ablations showing naive rank fusion and cross-encoder rerankers \\textbf{underperform the tuned hybrid at 30--170$\\times$ the latency}; shipped the faster pipeline (\\textbf{6.9\\,ms retrieval over 57K documents}).",
+      "tags": [
+        "ablation",
+        "rank fusion",
+        "cross-encoder",
+        "rerankers",
+        "latency",
+        "retrieval"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "needs_review",
+      "source": "resume/make_variants.py:EVIDENT[1]",
+      "alternatives": [
+        {
+          "value": "28–170×",
+          "files": 3
+        },
+        {
+          "value": "30–170×",
+          "files": 14
+        }
+      ]
+    },
+    {
+      "id": "evident.judge.full",
+      "entryId": "proj-evident",
+      "text": "Built an LLM-as-judge evaluation harness (claim faithfulness, citation precision, hidden-evidence abstention, bootstrap CIs); better retrieval raised evidence-in-context from 43% to 57%; 98.8% of 936 claims grounded.",
+      "latex": "Built an \\textbf{LLM-as-judge evaluation harness} (claim faithfulness, citation precision, hidden-evidence abstention, bootstrap CIs); better retrieval raised evidence-in-context from \\textbf{43\\% to 57\\%}; \\textbf{98.8\\%} of 936 claims grounded.",
+      "tags": [
+        "LLM-as-judge",
+        "evaluation",
+        "faithfulness",
+        "citation precision",
+        "bootstrap",
+        "RAG"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT[2]"
+    },
+    {
+      "id": "evident.demo.ml",
+      "entryId": "proj-evident",
+      "text": "Deployed a live demo on Streamlit Cloud with a provider-agnostic LLM client (Groq, Gemini, Ollama), SQLite response caching, and prebuilt indexes keyed by corpus fingerprint for ~1 s cold start.",
+      "latex": "Deployed a live demo on Streamlit Cloud with a provider-agnostic LLM client (Groq, Gemini, Ollama), SQLite response caching, and prebuilt indexes keyed by corpus fingerprint for $\\sim$1\\,s cold start.",
+      "tags": [
+        "Streamlit",
+        "Groq",
+        "Gemini",
+        "Ollama",
+        "SQLite",
+        "caching",
+        "deployment",
+        "LLM client"
+      ],
+      "roles": [
+        "ml"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT_ML[3]"
+    },
+    {
+      "id": "evident.search.swe",
+      "entryId": "proj-evident",
+      "text": "Built a hybrid search service (from-scratch BM25 on a sparse matrix + embeddings served by Strata) improving nDCG@10 by 8–74% over BM25 on 3 BEIR datasets at 6.9 ms retrieval over 57K documents.",
+      "latex": "Built a hybrid search service (from-scratch \\textbf{BM25} on a sparse matrix + embeddings served by \\textbf{Strata}) improving \\textbf{nDCG@10 by 8--74\\%} over BM25 on 3 BEIR datasets at \\textbf{6.9\\,ms} retrieval over 57K documents.",
+      "tags": [
+        "search",
+        "BM25",
+        "hybrid retrieval",
+        "sparse matrix",
+        "embeddings",
+        "Strata",
+        "nDCG",
+        "BEIR",
+        "latency"
+      ],
+      "roles": [
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT_SWE[0]"
+    },
+    {
+      "id": "evident.measured.swe",
+      "entryId": "proj-evident",
+      "text": "Measured every design choice: rerankers were dropped after ablations showed 30–170× latency with no quality gain; BM25 verified against Pyserini within ±0.002; LLM-as-judge harness checks citations and faithfulness.",
+      "latex": "Measured every design choice: rerankers were dropped after ablations showed \\textbf{30--170$\\times$} latency with no quality gain; BM25 verified against Pyserini within \\textbf{$\\pm$0.002}; LLM-as-judge harness checks citations and faithfulness.",
+      "tags": [
+        "ablation",
+        "rerankers",
+        "latency",
+        "Pyserini",
+        "LLM-as-judge",
+        "evaluation"
+      ],
+      "roles": [
+        "swe"
+      ],
+      "status": "needs_review",
+      "source": "resume/make_variants.py:EVIDENT_SWE[1]",
+      "alternatives": [
+        {
+          "value": "28–170×",
+          "files": 3
+        },
+        {
+          "value": "30–170×",
+          "files": 14
+        }
+      ]
+    },
+    {
+      "id": "evident.demo.swe",
+      "entryId": "proj-evident",
+      "text": "Deployed a live demo on Streamlit Cloud: provider-agnostic LLM client, SQLite response cache, prebuilt indexes keyed by corpus fingerprint (~1 s cold start).",
+      "latex": "Deployed a live demo on Streamlit Cloud: provider-agnostic LLM client, SQLite response cache, prebuilt indexes keyed by corpus fingerprint ($\\sim$1\\,s cold start).",
+      "tags": [
+        "Streamlit",
+        "LLM client",
+        "SQLite",
+        "caching",
+        "deployment",
+        "indexing"
+      ],
+      "roles": [
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT_SWE[2]"
+    },
+    {
+      "id": "evident.eval.q",
+      "entryId": "proj-evident",
+      "text": "Evaluated a hybrid retriever on 3 BEIR datasets: grid-searched the fusion weight on dev splits only (no test leakage), +8–74% nDCG@10 over BM25; showed rank fusion underperforms when one signal is weak.",
+      "latex": "Evaluated a hybrid retriever on 3 BEIR datasets: grid-searched the fusion weight on \\textbf{dev splits only} (no test leakage), +8--74\\% nDCG@10 over BM25; showed rank fusion \\textbf{underperforms} when one signal is weak.",
+      "tags": [
+        "BEIR",
+        "hybrid retrieval",
+        "nDCG",
+        "dev split",
+        "grid search",
+        "evaluation",
+        "statistics"
+      ],
+      "roles": [
+        "quant-research"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT_Q[0]"
+    },
+    {
+      "id": "evident.bootstrap.q",
+      "entryId": "proj-evident",
+      "text": "Reported 95% paired-bootstrap confidence intervals (10,000 resamples) and claimed only effects excluding zero: evidence-in-context 43%→57% (CI +5 to +23 pts); flagged a borderline effect and a negative result honestly.",
+      "latex": "Reported \\textbf{95\\% paired-bootstrap confidence intervals} (10,000 resamples) and claimed only effects excluding zero: evidence-in-context \\textbf{43\\%$\\to$57\\%} (CI +5 to +23 pts); flagged a borderline effect and a negative result honestly.",
+      "tags": [
+        "bootstrap",
+        "confidence intervals",
+        "paired bootstrap",
+        "statistics",
+        "evaluation",
+        "RAG"
+      ],
+      "roles": [
+        "quant-research"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:EVIDENT_Q[1]"
+    },
+    {
+      "id": "snaplink.api",
+      "entryId": "proj-snaplink",
+      "text": "REST API with random Base62 codes (62^6 ≈ 56.8B possible; collision check + retry), URL deduplication, a cache-aside Redis layer (24-hr TTL), atomic $inc click counts and HTTP 302 redirects.",
+      "latex": "REST API with random \\textbf{Base62} codes (62$^6 \\approx$ 56.8B possible; collision check + retry), URL deduplication, a \\textbf{cache-aside Redis} layer (24-hr TTL), atomic \\texttt{\\$inc} click counts and \\textbf{HTTP 302} redirects.",
+      "tags": [
+        "REST API",
+        "Base62",
+        "Redis",
+        "cache-aside",
+        "caching",
+        "HTTP 302",
+        "MongoDB",
+        "URL deduplication"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[3].item[0]"
+    },
+    {
+      "id": "snaplink.analytics",
+      "entryId": "proj-snaplink",
+      "text": "Non-blocking analytics via MongoDB aggregation pipelines, tiered rate limiting, TTL indexes; on Vercel.",
+      "latex": "Non-blocking analytics via \\textbf{MongoDB aggregation pipelines}, tiered \\textbf{rate limiting}, \\textbf{TTL indexes}; on Vercel.",
+      "tags": [
+        "MongoDB",
+        "aggregation pipelines",
+        "analytics",
+        "rate limiting",
+        "TTL indexes",
+        "Vercel"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:projects[3].item[1]"
+    },
+    {
+      "id": "overlay.build",
+      "entryId": "proj-overlay",
+      "text": "Built a frameless macOS overlay with system-wide global hotkeys, contextBridge IPC isolation and screen capture; streams tokens from 3 AI providers (Gemini, Groq, local Ollama) with cancellation.",
+      "latex": "Built a frameless macOS overlay with system-wide \\textbf{global hotkeys}, \\texttt{contextBridge} IPC isolation and screen capture; streams tokens from \\textbf{3 AI providers} (Gemini, Groq, local Ollama) with cancellation.",
+      "tags": [
+        "Electron",
+        "macOS",
+        "global hotkeys",
+        "IPC",
+        "screen capture",
+        "Gemini",
+        "Groq",
+        "Ollama",
+        "streaming",
+        "LLM client"
+      ],
+      "roles": [
+        "ml",
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:OVERLAY[0]"
+    },
+    {
+      "id": "overlay.ship",
+      "entryId": "proj-overlay",
+      "text": "Packaged and shipped .dmg/.zip binaries for Apple Silicon and Intel via GitHub Releases.",
+      "latex": "Packaged and shipped \\texttt{.dmg}/\\texttt{.zip} binaries for Apple Silicon and Intel via GitHub Releases.",
+      "tags": [
+        "Electron",
+        "packaging",
+        "GitHub Releases",
+        "macOS",
+        "Apple Silicon",
+        "Intel"
+      ],
+      "roles": [
+        "ml",
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:OVERLAY[1]"
+    },
+    {
+      "id": "overlay.short",
+      "entryId": "proj-overlay",
+      "text": "Frameless macOS overlay with global hotkeys, isolated IPC and screen capture; streams tokens from Gemini, Groq and local Ollama; shipped .dmg builds via GitHub Releases.",
+      "latex": "Frameless macOS overlay with global hotkeys, isolated IPC and screen capture; streams tokens from Gemini, Groq and local Ollama; shipped \\texttt{.dmg} builds via GitHub Releases.",
+      "tags": [
+        "Electron",
+        "macOS",
+        "global hotkeys",
+        "screen capture",
+        "Gemini",
+        "Groq",
+        "Ollama",
+        "streaming",
+        "GitHub Releases"
+      ],
+      "roles": [
+        "ml",
+        "swe"
+      ],
+      "status": "verified",
+      "source": "resume/make_variants.py:OVERLAY_1[0]"
+    },
+    {
+      "id": "oss.usearch",
+      "entryId": "oss",
+      "text": "USearch: fixed stale key lookups after compact() (wrong vector for 1,975 of 2,000 keys).",
+      "latex": "\\textbf{USearch:} fixed stale key lookups after \\texttt{compact()} (wrong vector for 1,975 of 2,000 keys).",
+      "tags": [
+        "USearch",
+        "C++",
+        "open source",
+        "bug fix"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:open-source[0].item[0]"
+    },
+    {
+      "id": "oss.sktime",
+      "entryId": "oss",
+      "text": "sktime / skpro: fixed median metrics on list horizon_weight and a multivariate predict_quantiles bug.",
+      "latex": "\\textbf{sktime / skpro:} fixed median metrics on list \\texttt{horizon\\_weight} and a multivariate \\texttt{predict\\_quantiles} bug.",
+      "tags": [
+        "sktime",
+        "skpro",
+        "Python",
+        "open source",
+        "bug fix",
+        "time series"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:open-source[0].item[1]"
+    },
+    {
+      "id": "ach.runnerup",
+      "entryId": "achievements",
+      "text": "Runner-up — Environmental Hacks, WeMakeDevs × AWS (Bharat Builds 2026); led a team of 4.",
+      "latex": "\\textbf{Runner-up} --- \\textbf{Environmental Hacks}, WeMakeDevs $\\times$ AWS (Bharat Builds 2026); \\textbf{led a team of 4}.",
+      "tags": [
+        "hackathon",
+        "runner-up",
+        "WeMakeDevs",
+        "AWS",
+        "leadership",
+        "team lead"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:achievements[0]"
+    },
+    {
+      "id": "ach.leetcode",
+      "entryId": "achievements",
+      "text": "LeetCode Knight — contest rating 2001 (top 2.64% globally), 900+ problems solved.",
+      "latex": "\\textbf{LeetCode Knight} --- contest rating \\textbf{2001} (top \\textbf{2.64\\%} globally), \\textbf{900+} problems solved.",
+      "tags": [
+        "LeetCode",
+        "competitive programming",
+        "DSA"
+      ],
+      "status": "needs_review",
+      "source": "resume/vividh_yadav_resume_general.tex:achievements[1]",
+      "alternatives": [
+        {
+          "value": "900+ problems solved",
+          "files": 7
+        },
+        {
+          "value": "LeetCode 800+ solved",
+          "files": 6
+        },
+        {
+          "value": "1100+ problems overall",
+          "files": 6
+        },
+        {
+          "value": "1500+ problems solved across LeetCode, Codeforces and GeeksForGeeks",
+          "files": 19
+        }
+      ]
+    },
+    {
+      "id": "ach.natwest",
+      "entryId": "achievements",
+      "text": "Top 1% nationally in NatWest's Code for Purpose Hackathon — recognized for AI solution design.",
+      "latex": "\\textbf{Top 1\\%} nationally in NatWest's \\textbf{Code for Purpose} Hackathon --- recognized for AI solution design.",
+      "tags": [
+        "hackathon",
+        "NatWest",
+        "Code for Purpose",
+        "AI solution design"
+      ],
+      "status": "verified",
+      "source": "resume/vividh_yadav_resume_general.tex:achievements[2]"
+    }
+  ],
+  "skills": [
+    {
+      "label": "Languages & CS",
+      "items": [
+        "Python",
+        "C++17",
+        "JavaScript",
+        "SQL",
+        "DSA",
+        "OOP",
+        "DBMS",
+        "Operating Systems",
+        "Networks"
+      ]
+    },
+    {
+      "label": "Backend & Data",
+      "items": [
+        "Node.js",
+        "Express",
+        "REST APIs",
+        "MongoDB",
+        "Redis",
+        "SQLite",
+        "NumPy",
+        "SciPy",
+        "Pandas"
+      ]
+    },
+    {
+      "label": "ML",
+      "items": [
+        "PyTorch",
+        "Scikit-learn",
+        "HuggingFace",
+        "Sentence-Transformers",
+        "LangChain",
+        "LangGraph"
+      ]
+    },
+    {
+      "label": "Tools & DevOps",
+      "items": [
+        "AWS (Lambda, Step Functions, S3, DynamoDB, SAM)",
+        "Git",
+        "GitHub Actions",
+        "Linux",
+        "CMake",
+        "pytest",
+        "Vercel",
+        "Streamlit Cloud"
+      ]
+    }
+  ],
+  "prefs": {}
+}
