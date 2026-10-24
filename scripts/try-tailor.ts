@@ -21,16 +21,18 @@ if (!file) {
   process.exit(1);
 }
 
+const jobFile: string = file;
+
 async function main() {
   const profile = ProfileSchema.parse(JSON.parse(fs.readFileSync("data/seed-profile.json", "utf8")));
-  const jobText = fs.readFileSync(file, "utf8");
+  const jobText = fs.readFileSync(jobFile, "utf8");
   const steer = flag("--steer");
 
   const r = await tailor({ profile, jobText, steer });
   const title = (id: string) => profile.entries.find((e) => e.id === id)?.title ?? id;
   const short = (s: string, n = 110) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
-  console.log(`\n${path.basename(file)}  ·  ${r.analysis.role} @ ${r.analysis.company}  ·  ${r.analysis.kind}/${r.analysis.roleFamily}`);
+  console.log(`\n${path.basename(jobFile)}  ·  ${r.analysis.role} @ ${r.analysis.company}  ·  ${r.analysis.kind}/${r.analysis.roleFamily}`);
   if (steer) console.log(`steer: ${steer}`);
 
   console.log(`\nRESUME  (${r.result.bullets.length} bullets)`);
