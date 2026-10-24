@@ -34,6 +34,8 @@ export interface ClaimOptions {
   extraEvidence?: string;
   /** Prose (cover note, email, match notes): a sentence that admits a gap ("no hands-on Azure experience") may name a tool. */
   gapsOk?: boolean;
+  /** Tools named in the profile's skills count as evidence. Off for bullets: a bullet may only name tools its own facts name. */
+  skillsCount?: boolean;
 }
 
 export interface GuardInput {
@@ -149,7 +151,7 @@ export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = 
   const terms = uniq([...LEXICON, ...keywords.map((k) => k.trim().toLowerCase()).filter(Boolean)]);
   // Tags record what a fact proves (e.g. NEON/AVX2 -> SIMD), so they count for tool names only.
   const tags = facts.flatMap((f) => f.tags).join(" , ").toLowerCase();
-  const supported = `${ev.lower} ${skillsText(profile)} ${tags}`;
+  const supported = `${ev.lower} ${opts.skillsCount === false ? "" : skillsText(profile)} ${tags}`;
   const asserted = opts.gapsOk ? lower.split(/(?<=[.!?])\s+/).filter((sent) => !GAP_SENTENCE.test(sent)).join(" ") : lower;
   const missing = terms.filter((t) => termRegex(t).test(asserted) && !termRegex(t).test(supported));
   for (const t of missing.filter((t) => !missing.some((o) => o !== t && o.includes(t)))) {
@@ -191,7 +193,7 @@ export function guard(input: GuardInput, profile: Profile): GuardResult {
   ];
 
   const violations: Violation[] = claims.flatMap((c) =>
-    guardClaim(c, profile, keywords, c.where.startsWith("bullet") ? {} : { gapsOk: true, extraEvidence: c.where === "email" ? input.email?.extraEvidence : undefined }),
+    guardClaim(c, profile, keywords, c.where.startsWith("bullet") ? { skillsCount: false } : { gapsOk: true, extraEvidence: c.where === "email" ? input.email?.extraEvidence : undefined }),
   );
 
   // G6

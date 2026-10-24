@@ -1,0 +1,267 @@
+{
+  "id": "recruiter",
+  "label": "Recruiter email, Data Scientist",
+  "jobText": "Subject: Data Scientist (100% remote) at Brightfield Analytics: quick questions\n\nHi,\n\nI came across your profile and I think you could be a fit for a Data Scientist role at Brightfield Analytics, a fictional company used here as a demo. The role is 100% remote and open to people based in India.\n\nThe team builds forecasting and anomaly-detection models for energy utilities. Day to day you would clean time-series data, train and evaluate models in Python, and present results to non-technical stakeholders. They use Azure Machine Learning and Power BI, plus SQL for most of the data work.\n\nBefore I send your details across, could you reply to a few questions?\n\n1. Are you comfortable working fully remote, and which city are you based in?\n2. What is your current notice period, or when could you start?\n3. What is your expected compensation?\n4. Do you have hands-on experience with Azure Machine Learning or Power BI?\n5. Have you worked on time-series forecasting? A line or two on a project would help.\n\nPlease reply by Friday so I can submit your profile this week.\n\nThanks,\nMeera\nTalent Partner, Brightfield Analytics\n",
+  "steer": "",
+  "response": {
+    "analysis": {
+      "company": "Brightfield Analytics",
+      "role": "Data Scientist",
+      "roleFamily": "data",
+      "kind": "recruiter_email",
+      "location": "India",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "Clean time-series data, train and evaluate models in Python",
+          "priority": "must",
+          "keywords": [
+            "Python"
+          ]
+        },
+        {
+          "id": "r2",
+          "text": "Experience with Azure Machine Learning and Power BI",
+          "priority": "nice",
+          "keywords": [
+            "Azure Machine Learning",
+            "Power BI"
+          ]
+        },
+        {
+          "id": "r3",
+          "text": "SQL for most of the data work",
+          "priority": "must",
+          "keywords": [
+            "SQL"
+          ]
+        }
+      ],
+      "recruiterQuestions": [
+        "Are you comfortable working fully remote, and which city are you based in?",
+        "What is your current notice period, or when could you start?",
+        "What is your expected compensation?",
+        "Do you have hands-on experience with Azure Machine Learning or Power BI?",
+        "Have you worked on time-series forecasting? A line or two on a project would help."
+      ]
+    },
+    "result": {
+      "entryOrder": [
+        "research-bitm",
+        "proj-dhuaan",
+        "proj-evident",
+        "proj-strata",
+        "proj-snaplink",
+        "proj-overlay",
+        "oss",
+        "achievements"
+      ],
+      "bullets": [
+        {
+          "entryId": "research-bitm",
+          "factIds": [
+            "research.ised.paper.full"
+          ],
+          "text": "Paper accepted at 14th IEEE ISED 2026: co-authored \"A transformer-based architecture for pre-impact fall detection with highly imbalanced data\", modeling wearable IMU time series (KFall). Engineered Adaptive Temporal Windowing to adjust sliding strides under 8:1 class imbalance (+1.58% balanced accuracy).",
+          "rewritten": false
+        },
+        {
+          "entryId": "research-bitm",
+          "factIds": [
+            "research.ensemble.full"
+          ],
+          "text": "Designed a late-fusion ensemble of a 1D-CNN (local impact features) and a Conformer (global temporal attention), achieving 97.03% balanced accuracy, 96.2% sensitivity and 628 ms lead time on KFall (beyond airbag deployment thresholds).",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-dhuaan",
+          "factIds": [
+            "dhuaan.pipeline"
+          ],
+          "text": "Serverless pipeline (EventBridge, Step Functions, Lambda, S3, DynamoDB, SAM): every 3 h ingests NASA fire and wind data, runs a NumPy trajectory model and sends Telegram/SNS alerts.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-dhuaan",
+          "factIds": [
+            "dhuaan.backtest"
+          ],
+          "text": "Backtested on 31 Oct 2025 (1,209 fires): forecast smoke reaching north-west Delhi, consistent with CPCB readings; top 25 fire clusters → 62% of modelled Delhi smoke.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-evident",
+          "factIds": [
+            "evident.hybrid.full"
+          ],
+          "text": "Built a hybrid RAG retriever (from-scratch BM25 + embeddings served by Strata, dev-tuned fusion) improving nDCG@10 by 8–74% over BM25 on 3 BEIR datasets; my BM25 matches Pyserini's scores within ±0.002.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-evident",
+          "factIds": [
+            "evident.judge.full"
+          ],
+          "text": "Built an LLM-as-judge evaluation harness (claim faithfulness, citation precision, hidden-evidence abstention, bootstrap CIs); better retrieval raised evidence-in-context from 43% to 57%; 98.8% of 936 claims grounded.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.bench.full"
+          ],
+          "text": "Built a C++ vector database around an HNSW index; on 1M-vector SIFT it matches FAISS and runs 1.9× faster than hnswlib at equal recall (6,597 queries/s at 0.99 recall, one core) and builds the index in 20.5 s.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.server.hft"
+          ],
+          "text": "Cut server p99 from 52 ms to under 5 ms (76K req/s) by fixing keep-alive and thread-pool sizing; tripled filtered throughput (3.5K→10.8K req/s) with sorted posting lists; CRC-checked WAL with crash recovery.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-snaplink",
+          "factIds": [
+            "snaplink.api"
+          ],
+          "text": "REST API with random Base62 codes (62^6 ≈ 56.8B possible; collision check + retry), URL deduplication, a cache-aside Redis layer (24-hr TTL), atomic $inc click counts and HTTP 302 redirects.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-overlay",
+          "factIds": [
+            "overlay.short"
+          ],
+          "text": "Frameless macOS overlay with global hotkeys, isolated IPC and screen capture; streams tokens from Gemini, Groq and local Ollama; shipped .dmg builds via GitHub Releases.",
+          "rewritten": false
+        },
+        {
+          "entryId": "oss",
+          "factIds": [
+            "oss.count"
+          ],
+          "text": "4 merged pull requests across USearch, sktime and skpro.",
+          "rewritten": false
+        },
+        {
+          "entryId": "achievements",
+          "factIds": [
+            "ach.runnerup"
+          ],
+          "text": "Runner-up — Environmental Hacks, WeMakeDevs × AWS (Bharat Builds 2026); led a team of 4.",
+          "rewritten": false
+        }
+      ],
+      "skills": [
+        {
+          "label": "Languages & CS",
+          "items": [
+            "Python",
+            "SQL",
+            "C++17"
+          ]
+        },
+        {
+          "label": "Backend & Data",
+          "items": [
+            "NumPy",
+            "Pandas",
+            "MongoDB",
+            "Redis",
+            "REST APIs"
+          ]
+        },
+        {
+          "label": "ML",
+          "items": [
+            "PyTorch",
+            "Scikit-learn"
+          ]
+        },
+        {
+          "label": "Tools & DevOps",
+          "items": [
+            "AWS (Lambda, Step Functions, S3, DynamoDB, SAM)",
+            "Git",
+            "GitHub Actions",
+            "Linux"
+          ]
+        }
+      ],
+      "match": [
+        {
+          "reqId": "r1",
+          "status": "met",
+          "factIds": [
+            "research.ised.paper.full",
+            "research.ensemble.full"
+          ],
+          "note": "Proven clean time-series data handling, model training, and evaluation in Python."
+        },
+        {
+          "reqId": "r2",
+          "status": "missing",
+          "factIds": [],
+          "note": "No hands-on Azure Machine Learning or Power BI experience yet, but my AWS (Lambda, Step Functions, S3) and serverless work maps closely."
+        },
+        {
+          "reqId": "r3",
+          "status": "partial",
+          "factIds": [
+            "snaplink.analytics"
+          ],
+          "note": "SQL is listed in skills, and MongoDB/Redis are used extensively in projects, though dedicated SQL fact IDs are limited."
+        }
+      ],
+      "coverNote": {
+        "paragraphs": [
+          {
+            "text": "I am writing to express my interest in the Data Scientist role at Brightfield Analytics. During my undergraduate research at Birla Institute of Technology, Mesra, I built and evaluated advanced deep learning models for time-series data.",
+            "factIds": [
+              "research.internship",
+              "research.ensemble.full"
+            ]
+          },
+          {
+            "text": "My experience includes building serverless data pipelines in Python that ingest, process, and forecast complex environmental time series using AWS tools.",
+            "factIds": [
+              "dhuaan.pipeline"
+            ]
+          },
+          {
+            "text": "I welcome the opportunity to discuss how my time-series modeling and Python background align with your data requirements.",
+            "factIds": [
+              "research.ensemble.full"
+            ]
+          }
+        ]
+      },
+      "email": {
+        "subject": "Application for Data Scientist - Brightfield Analytics",
+        "body": "Hello, I am writing to apply for the Data Scientist role at Brightfield Analytics. I am comfortable working fully remote, and I am based in [fill in]. My notice period is [fill in], and my expected compensation is [fill in]. I do not have hands-on experience with Azure Machine Learning or Power BI yet, but my AWS Step Functions and Lambda work maps closely. For time-series forecasting, I designed a late-fusion ensemble of a 1D-CNN and a Conformer on wearable IMU time series, reaching 97.03% balanced accuracy and 628 ms lead time on KFall. I would welcome a conversation to discuss my background further. Best regards.",
+        "factIds": [
+          "research.ensemble.full",
+          "dhuaan.pipeline"
+        ]
+      }
+    },
+    "guard": {
+      "claims": 16,
+      "verified": 16,
+      "blocked": [],
+      "repaired": []
+    },
+    "warnings": [
+      "2 bullet(s) are over 230 characters; the page may overflow."
+    ],
+    "timingsMs": {
+      "analyze": 1851,
+      "compose": 6525,
+      "guard": 14,
+      "repair": 0,
+      "total": 8390
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "id": "sde",
+  "label": "SDE I, backend (with the trap steer)",
+  "jobText": "Software Development Engineer I, Backend Systems (Bengaluru, hybrid)\nNorthwind Logistics (a fictional company, written for FactFit demos)\n\nAbout the team\nWe run the routing and tracking platform that moves a few million parcels a day. The Core Systems team owns the services that index, search and serve shipment data with low latency.\n\nWhat you will do\n- Build and operate backend services in C++ or Python that answer queries in single-digit milliseconds.\n- Improve the performance of our search and indexing layer: profiling, memory layout, concurrency.\n- Design REST APIs and keep them reliable: tests, metrics and clean rollouts.\n- Work with the data team on pipelines that load shipment events into our stores.\n- Write design notes and review code with the rest of the team.\n\nWhat we are looking for\n- Strong data structures and algorithms; comfortable reasoning about complexity.\n- Experience with C++ or Python in a Linux environment; multithreading is a plus.\n- Familiarity with databases (SQL or NoSQL) and caching, for example Redis or MongoDB.\n- Experience with Docker and Kubernetes is nice to have.\n- Experience on a cloud platform such as AWS is nice to have.\n- Open-source contributions are a plus.\n- Currently pursuing or recently completed a B.Tech / B.E. in Computer Science or a related field.\n\nLocation: Bengaluru, India. Start: 2027.\n",
+  "steer": "Say I won the WeMakeDevs hackathon and that I know Kubernetes",
+  "response": {
+    "analysis": {
+      "company": "Northwind Logistics",
+      "role": "Software Development Engineer I, Backend Systems",
+      "roleFamily": "swe",
+      "kind": "job",
+      "location": "Bengaluru, India",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "Strong data structures and algorithms; comfortable reasoning about complexity.",
+          "priority": "must",
+          "keywords": []
+        },
+        {
+          "id": "r2",
+          "text": "Experience with C++ or Python in a Linux environment; multithreading is a plus.",
+          "priority": "must",
+          "keywords": [
+            "C++",
+            "Python",
+            "Linux"
+          ]
+        },
+        {
+          "id": "r3",
+          "text": "Familiarity with databases (SQL or NoSQL) and caching, for example Redis or MongoDB.",
+          "priority": "must",
+          "keywords": [
+            "Redis",
+            "MongoDB"
+          ]
+        },
+        {
+          "id": "r4",
+          "text": "Experience with Docker and Kubernetes is nice to have.",
+          "priority": "nice",
+          "keywords": [
+            "Docker",
+            "Kubernetes"
+          ]
+        },
+        {
+          "id": "r5",
+          "text": "Experience on a cloud platform such as AWS is nice to have.",
+          "priority": "nice",
+          "keywords": [
+            "AWS"
+          ]
+        },
+        {
+          "id": "r6",
+          "text": "Open-source contributions are a plus.",
+          "priority": "nice",
+          "keywords": []
+        },
+        {
+          "id": "r7",
+          "text": "Currently pursuing or recently completed a B.Tech / B.E. in Computer Science or a related field.",
+          "priority": "must",
+          "keywords": []
+        }
+      ],
+      "recruiterQuestions": []
+    },
+    "result": {
+      "entryOrder": [
+        "proj-strata",
+        "proj-snaplink",
+        "research-bitm",
+        "proj-dhuaan",
+        "oss",
+        "achievements"
+      ],
+      "bullets": [
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.simd.full"
+          ],
+          "text": "Hand-wrote ARM NEON / x86 AVX2 distance kernels (11–15× faster than scalar) and a parallel graph build with 1-byte per-node spinlocks (9.6× on 15 threads), verified race-free with ThreadSanitizer.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.durability.full"
+          ],
+          "text": "Engineered durability (CRC-checked write-ahead log, atomic snapshots, crash recovery verified with kill -9), metadata filtering and a REST server sustaining 76K req/s at 2 ms p99; Python bindings via pybind11.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.bench.hft"
+          ],
+          "text": "Built an HNSW vector index in C++17 that matches FAISS and runs 1.9× faster than hnswlib at equal recall on 1M SIFT vectors (6,597 queries/s at 0.99 recall on one core, 0.15 ms per query).",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-snaplink",
+          "factIds": [
+            "snaplink.api"
+          ],
+          "text": "REST API with random Base62 codes (62^6 ≈ 56.8B possible; collision check + retry), URL deduplication, a cache-aside Redis layer (24-hr TTL), atomic $inc click counts and HTTP 302 redirects.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-snaplink",
+          "factIds": [
+            "snaplink.analytics"
+          ],
+          "text": "Non-blocking analytics via MongoDB aggregation pipelines, tiered rate limiting, TTL indexes; on Vercel.",
+          "rewritten": false
+        },
+        {
+          "entryId": "research-bitm",
+          "factIds": [
+            "research.ensemble.full"
+          ],
+          "text": "Designed a late-fusion ensemble of a 1D-CNN (local impact features) and a Conformer (global temporal attention), achieving 97.03% balanced accuracy, 96.2% sensitivity and 628 ms lead time on KFall (beyond airbag deployment thresholds).",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-dhuaan",
+          "factIds": [
+            "dhuaan.pipeline"
+          ],
+          "text": "Serverless pipeline (EventBridge, Step Functions, Lambda, S3, DynamoDB, SAM): every 3 h ingests NASA fire and wind data, runs a NumPy trajectory model and sends Telegram/SNS alerts.",
+          "rewritten": false
+        },
+        {
+          "entryId": "oss",
+          "factIds": [
+            "oss.usearch"
+          ],
+          "text": "USearch: fixed stale key lookups after compact() (wrong vector for 1,975 of 2,000 keys).",
+          "rewritten": false
+        },
+        {
+          "entryId": "achievements",
+          "factIds": [
+            "ach.runnerup"
+          ],
+          "text": "Runner-up — Environmental Hacks, WeMakeDevs × AWS (Bharat Builds 2026); led a team of 4.",
+          "rewritten": false
+        }
+      ],
+      "skills": [
+        {
+          "label": "Languages & CS",
+          "items": [
+            "Python",
+            "C++17",
+            "JavaScript",
+            "SQL",
+            "DSA",
+            "OOP",
+            "DBMS",
+            "Operating Systems",
+            "Networks"
+          ]
+        },
+        {
+          "label": "Backend & Data",
+          "items": [
+            "Node.js",
+            "Express",
+            "REST APIs",
+            "MongoDB",
+            "Redis",
+            "SQLite",
+            "NumPy",
+            "SciPy",
+            "Pandas"
+          ]
+        },
+        {
+          "label": "Tools & DevOps",
+          "items": [
+            "AWS (Lambda, Step Functions, S3, DynamoDB, SAM)",
+            "Git",
+            "GitHub Actions",
+            "Linux",
+            "CMake",
+            "pytest",
+            "Vercel",
+            "Streamlit Cloud"
+          ]
+        }
+      ],
+      "match": [
+        {
+          "reqId": "r1",
+          "status": "met",
+          "factIds": [
+            "strata.bench.hft",
+            "strata.locks.hft"
+          ],
+          "note": "Proven by implementing high-performance C++ data structures (HNSW index, custom memory layouts, atomic spinlocks and complexity-optimized search)."
+        },
+        {
+          "reqId": "r2",
+          "status": "met",
+          "factIds": [
+            "strata.simd.full",
+            "strata.durability"
+          ],
+          "note": "Extensive C++ and Python experience in Linux environments, including multithreading and concurrency."
+        },
+        {
+          "reqId": "r3",
+          "status": "met",
+          "factIds": [
+            "snaplink.api",
+            "snaplink.analytics"
+          ],
+          "note": "Built systems using Redis for caching and MongoDB for NoSQL storage."
+        },
+        {
+          "reqId": "r4",
+          "status": "missing",
+          "factIds": [],
+          "note": "No direct Docker or Kubernetes experience cited in the facts; closest experience is with AWS serverless and Linux environments."
+        },
+        {
+          "reqId": "r5",
+          "status": "met",
+          "factIds": [
+            "dhuaan.pipeline"
+          ],
+          "note": "Built serverless pipelines utilizing AWS Lambda, Step Functions, S3, DynamoDB, EventBridge, and SAM."
+        },
+        {
+          "reqId": "r6",
+          "status": "met",
+          "factIds": [
+            "oss.count",
+            "oss.usearch",
+            "oss.sktime"
+          ],
+          "note": "Contributed to prominent open-source repositories including USearch, sktime, and skpro."
+        },
+        {
+          "reqId": "r7",
+          "status": "met",
+          "factIds": [
+            "edu.grad"
+          ],
+          "note": "Pursuing a B.Tech in Artificial Intelligence & Machine Learning (Birla Institute of Technology, Mesra, Aug 2023 – May 2027)."
+        }
+      ],
+      "coverNote": {
+        "paragraphs": [
+          {
+            "text": "I am a backend and systems developer with strong experience building high-performance C++ components and scalable data pipelines. In building Strata, a C++ vector database, I engineered crash recovery with a CRC-checked write-ahead log, metadata filters, and a REST server sustaining 76K req/s at 2 ms p99.",
+            "factIds": [
+              "strata.durability.full"
+            ]
+          },
+          {
+            "text": "My background includes building robust web APIs and caching layers. For SnapLink, I developed a REST API featuring random Base62 codes, URL deduplication, and a cache-aside Redis layer with 24-hour TTL, backed by non-blocking MongoDB analytics.",
+            "factIds": [
+              "snaplink.api",
+              "snaplink.analytics"
+            ]
+          },
+          {
+            "text": "I am also experienced with cloud infrastructure, having built serverless data pipelines on AWS using Lambda, Step Functions, EventBridge, and DynamoDB. I would love to bring my backend engineering skills to Northwind Logistics.",
+            "factIds": [
+              "dhuaan.pipeline"
+            ]
+          }
+        ]
+      },
+      "email": {
+        "subject": "Backend Software Engineer Application — Northwind Logistics",
+        "body": "Hello Team, I am writing to express my interest in the Backend Systems SDE I role at Northwind Logistics. I bring hands-on experience in C++ and Python development, having built high-throughput REST servers, custom multithreaded data structures, and Redis caching layers. I also have cloud experience building serverless pipelines on AWS and contributed to open-source libraries like USearch and sktime. I would welcome the opportunity to discuss how my systems background matches your backend needs. Best regards.",
+        "factIds": [
+          "strata.durability.full",
+          "snaplink.api",
+          "dhuaan.pipeline",
+          "oss.count"
+        ]
+      }
+    },
+    "guard": {
+      "claims": 13,
+      "verified": 13,
+      "blocked": [
+        {
+          "where": "steer",
+          "text": "Steer asks for “won”",
+          "reasons": [
+            "'won': your facts say Top 25, Top 1%, Runner-up."
+          ]
+        },
+        {
+          "where": "steer",
+          "text": "Steer asks for “kubernetes”",
+          "reasons": [
+            "'kubernetes': not in your cited facts or skills."
+          ]
+        }
+      ],
+      "repaired": []
+    },
+    "warnings": [
+      "1 bullet(s) are over 230 characters; the page may overflow."
+    ],
+    "timingsMs": {
+      "analyze": 2635,
+      "compose": 5825,
+      "guard": 23,
+      "repair": 0,
+      "total": 8492
+    }
+  }
+}

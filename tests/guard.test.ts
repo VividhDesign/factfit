@@ -291,3 +291,23 @@ describe("list markers", () => {
     expect(guardClaim({ where: "email", text, factIds: ["strata.bench.full"] }, profile).map((v) => v.token)).toEqual(["40%"]);
   });
 });
+
+describe("bullets may only name tools their own facts name", () => {
+  const asBullet = (text: string, factIds: string[]) =>
+    guard({ bullets: [{ entryId: profile.facts.find((f) => f.id === factIds[0])!.entryId, text, factIds }] }, profile);
+
+  it("blocks 'C++ and Python tooling' on a research fact, even though both are in the skills", () => {
+    const r = asBullet("Developed an ensemble architecture with C++ and Python tooling for data processing.", ["research.ensemble"]);
+    expect(r.violations.map((v) => v.token)).toEqual(expect.arrayContaining(["c++", "python"]));
+  });
+  it("still lets prose use a skill (cover note, email)", () => {
+    const r = guard({ bullets: [], paragraphs: [{ text: "I use Python and Git every day.", factIds: ["research.ensemble"] }] }, profile);
+    expect(r.violations).toEqual([]);
+  });
+  it("every approved bullet still passes as a bullet, unchanged", () => {
+    for (const f of profile.facts.filter((x) => x.status === "verified")) {
+      expect(asBullet(f.text, [f.id]).violations, f.id).toEqual([]);
+      if (f.latex) expect(asBullet(f.latex, [f.id]).violations, f.id).toEqual([]);
+    }
+  });
+});

@@ -144,3 +144,29 @@ export function latexToText(latex: string): string {
   s = s.replace(/\u0000/g, "$");
   return s.replace(/\s+/g, " ").trim();
 }
+
+const escHtml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+/** Plain text of a fragment, keeping the whitespace at both ends (latexToText trims it). */
+function chunkText(chunk: string): string {
+  const lead = /^\s/.test(chunk) ? " " : "";
+  const trail = /\s$/.test(chunk) && chunk.trim() ? " " : "";
+  return chunk.trim() ? lead + latexToText(chunk) + trail : chunk ? " " : "";
+}
+
+const STYLE_TAGS: Record<string, string> = { textbf: "strong", emph: "em", textit: "em", texttt: "code" };
+
+/** HTML for a resume bullet: \textbf, \emph, \textit and \texttt become tags; everything else is plain, escaped text. */
+export function latexToHtml(latex: string): string {
+  let out = "";
+  let i = 0;
+  const cmd = /\\(textbf|emph|textit|texttt)\{/g;
+  for (let m: RegExpExecArray | null; (m = cmd.exec(latex)); ) {
+    const g = readGroup(latex, m.index + m[0].length - 1);
+    const tag = STYLE_TAGS[m[1]];
+    out += escHtml(chunkText(latex.slice(i, m.index))) + `<${tag}>${latexToHtml(g.content)}</${tag}>`;
+    i = g.end;
+    cmd.lastIndex = g.end;
+  }
+  return (out + escHtml(chunkText(latex.slice(i)))).replace(/\s+/g, " ").trim();
+}

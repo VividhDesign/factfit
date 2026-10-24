@@ -93,7 +93,7 @@ const gemini: Provider = {
           responseJsonSchema: jsonSchema,
           maxOutputTokens: opts.maxTokens ?? 16000,
           // Flash models can skip thinking, which keeps a run under 30 s; the guard checks the output anyway.
-          ...(/flash/.test(model) ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
+          ...(/flash(?!-lite)/.test(model) ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
         },
       }),
     });
@@ -133,6 +133,8 @@ export const generateObject: GenerateObject = async (schema, opts) => {
   const a = parseWith(schema, first);
   if (a.ok) return a.value;
 
+  // Logged so you can see how often a model's reply fails validation (compare models by counting these).
+  console.warn(`[llm] reply failed validation, retrying once: ${a.error.split("\n")[0]}`);
   const second = await provider.complete(schema, opts, [
     { role: "assistant", content: first },
     { role: "user", content: `Your reply did not validate: ${a.error}\nReply again with corrected JSON only.` },

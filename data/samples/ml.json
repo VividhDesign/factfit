@@ -1,0 +1,325 @@
+{
+  "id": "ml",
+  "label": "ML Engineer, RAG and search",
+  "jobText": "Machine Learning Engineer, Retrieval and RAG (Remote, India)\nLumen Search Labs (a fictional company, written for FactFit demos)\n\nAbout us\nLumen builds question-answering over private document collections for small legal and finance teams. Our product lives or dies on retrieval quality, so we measure everything.\n\nThe role\nYou will own the retrieval stack end to end: indexing, hybrid search, reranking and evaluation of generated answers.\n\nResponsibilities\n- Design and tune hybrid retrieval that combines keyword search (BM25) with dense embeddings.\n- Build evaluation harnesses for retrieval (nDCG, recall) and for generated answers (faithfulness, citation quality).\n- Decide, with data, whether a reranker or a bigger model is worth its latency.\n- Run vector search at scale; HNSW and approximate nearest neighbour experience is a big plus.\n- Ship Python services and demos; Streamlit or FastAPI is fine.\n- Write up experiments clearly, with confidence intervals where it matters.\n\nRequirements\n- Strong Python; PyTorch and Hugging Face or Sentence-Transformers experience.\n- Hands-on experience building a RAG system and measuring it.\n- Good statistics sense: you know why a test split must stay untouched.\n- Experience with LangChain or LangGraph is nice to have.\n- Experience with Azure OpenAI or Databricks is nice to have.\n- Published research or a paper is a plus.\n\nCompensation and logistics are discussed after a first conversation.\n",
+  "steer": "Stress the evaluation work and the Strata vector database.",
+  "response": {
+    "analysis": {
+      "company": "Lumen Search Labs",
+      "role": "Machine Learning Engineer, Retrieval and RAG",
+      "roleFamily": "ml",
+      "kind": "job",
+      "location": "Remote, India",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "Strong Python; PyTorch and Hugging Face or Sentence-Transformers experience.",
+          "priority": "must",
+          "keywords": [
+            "Python",
+            "PyTorch",
+            "Hugging Face",
+            "Sentence-Transformers"
+          ]
+        },
+        {
+          "id": "r2",
+          "text": "Hands-on experience building a RAG system and measuring it.",
+          "priority": "must",
+          "keywords": []
+        },
+        {
+          "id": "r3",
+          "text": "Good statistics sense: you know why a test split must stay untouched.",
+          "priority": "must",
+          "keywords": []
+        },
+        {
+          "id": "r4",
+          "text": "Experience with LangChain or LangGraph is nice to have.",
+          "priority": "nice",
+          "keywords": [
+            "LangChain",
+            "LangGraph"
+          ]
+        },
+        {
+          "id": "r5",
+          "text": "Experience with Azure OpenAI or Databricks is nice to have.",
+          "priority": "nice",
+          "keywords": [
+            "Azure OpenAI",
+            "Databricks"
+          ]
+        },
+        {
+          "id": "r6",
+          "text": "Published research or a paper is a plus.",
+          "priority": "nice",
+          "keywords": []
+        }
+      ],
+      "recruiterQuestions": []
+    },
+    "result": {
+      "entryOrder": [
+        "proj-evident",
+        "proj-strata",
+        "research-bitm",
+        "proj-dhuaan",
+        "proj-overlay",
+        "proj-snaplink",
+        "oss",
+        "achievements"
+      ],
+      "bullets": [
+        {
+          "entryId": "proj-evident",
+          "factIds": [
+            "evident.hybrid.full"
+          ],
+          "text": "Built a hybrid RAG retriever (from-scratch BM25 + embeddings served by Strata, dev-tuned fusion) improving nDCG@10 by 8–74% over BM25 on 3 BEIR datasets; my BM25 matches Pyserini's scores within ±0.002.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-evident",
+          "factIds": [
+            "evident.judge.full"
+          ],
+          "text": "Built an LLM-as-judge evaluation harness (claim faithfulness, citation precision, hidden-evidence abstention, bootstrap CIs); better retrieval raised evidence-in-context from 43% to 57%; 98.8% of 936 claims grounded.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.bench.hft"
+          ],
+          "text": "Built an HNSW vector index in C++17 that matches FAISS and runs 1.9× faster than hnswlib at equal recall on 1M SIFT vectors (6,597 queries/s at 0.99 recall on one core, 0.15 ms per query).",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.kernels.ml"
+          ],
+          "text": "NEON/AVX2 distance kernels (11–15× over scalar), parallel build (9.6× on 15 threads), metadata filters, CRC-checked write-ahead log and pybind11 bindings with zero-copy NumPy input.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-strata",
+          "factIds": [
+            "strata.bench.qr"
+          ],
+          "text": "C++ HNSW vector index matching FAISS and 1.9× faster than hnswlib at equal recall on 1M SIFT vectors; benchmarked as recall–throughput curves over an ef sweep, with a +10-point recall ablation of the neighbour-selection heuristic.",
+          "rewritten": false
+        },
+        {
+          "entryId": "research-bitm",
+          "factIds": [
+            "research.ised.paper.full"
+          ],
+          "text": "Paper accepted at 14th IEEE ISED 2026: co-authored \"A transformer-based architecture for pre-impact fall detection with highly imbalanced data\", modeling wearable IMU time series (KFall). Engineered Adaptive Temporal Windowing to adjust sliding strides under 8:1 class imbalance (+1.58% balanced accuracy).",
+          "rewritten": false
+        },
+        {
+          "entryId": "research-bitm",
+          "factIds": [
+            "research.ensemble.full"
+          ],
+          "text": "Designed a late-fusion ensemble of a 1D-CNN (local impact features) and a Conformer (global temporal attention), achieving 97.03% balanced accuracy, 96.2% sensitivity and 628 ms lead time on KFall (beyond airbag deployment thresholds).",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-dhuaan",
+          "factIds": [
+            "dhuaan.pipeline"
+          ],
+          "text": "Serverless pipeline (EventBridge, Step Functions, Lambda, S3, DynamoDB, SAM): every 3 h ingests NASA fire and wind data, runs a NumPy trajectory model and sends Telegram/SNS alerts.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-overlay",
+          "factIds": [
+            "overlay.short"
+          ],
+          "text": "Frameless macOS overlay with global hotkeys, isolated IPC and screen capture; streams tokens from Gemini, Groq and local Ollama; shipped .dmg builds via GitHub Releases.",
+          "rewritten": false
+        },
+        {
+          "entryId": "proj-snaplink",
+          "factIds": [
+            "snaplink.api"
+          ],
+          "text": "REST API with random Base62 codes (62^6 ≈ 56.8B possible; collision check + retry), URL deduplication, a cache-aside Redis layer (24-hr TTL), atomic $inc click counts and HTTP 302 redirects.",
+          "rewritten": false
+        },
+        {
+          "entryId": "oss",
+          "factIds": [
+            "oss.count"
+          ],
+          "text": "4 merged pull requests across USearch, sktime and skpro.",
+          "rewritten": false
+        },
+        {
+          "entryId": "achievements",
+          "factIds": [
+            "ach.runnerup"
+          ],
+          "text": "Runner-up — Environmental Hacks, WeMakeDevs × AWS (Bharat Builds 2026); led a team of 4.",
+          "rewritten": false
+        }
+      ],
+      "skills": [
+        {
+          "label": "Languages & CS",
+          "items": [
+            "Python",
+            "C++17",
+            "JavaScript",
+            "SQL",
+            "DSA",
+            "OOP"
+          ]
+        },
+        {
+          "label": "ML",
+          "items": [
+            "PyTorch",
+            "Scikit-learn",
+            "HuggingFace",
+            "Sentence-Transformers",
+            "LangChain",
+            "LangGraph"
+          ]
+        },
+        {
+          "label": "Backend & Data",
+          "items": [
+            "Node.js",
+            "Express",
+            "REST APIs",
+            "MongoDB",
+            "Redis",
+            "SQLite",
+            "NumPy",
+            "SciPy",
+            "Pandas"
+          ]
+        },
+        {
+          "label": "Tools & DevOps",
+          "items": [
+            "AWS (Lambda, Step Functions, S3, DynamoDB, SAM)",
+            "Git",
+            "GitHub Actions",
+            "Linux",
+            "CMake",
+            "pytest",
+            "Streamlit Cloud"
+          ]
+        }
+      ],
+      "match": [
+        {
+          "reqId": "r1",
+          "status": "met",
+          "factIds": [
+            "research.ised.paper.full"
+          ],
+          "note": "Candidate has strong Python, PyTorch, and Hugging Face experience as demonstrated in deep learning and research work."
+        },
+        {
+          "reqId": "r2",
+          "status": "met",
+          "factIds": [
+            "evident.hybrid.full",
+            "evident.judge.full"
+          ],
+          "note": "Built a hybrid RAG system with BM25 and Strata embeddings, and measured performance with an LLM-as-judge evaluation harness."
+        },
+        {
+          "reqId": "r3",
+          "status": "met",
+          "factIds": [
+            "evident.eval.q",
+            "evident.bootstrap.q"
+          ],
+          "note": "Demonstrated sound statistics sense by grid-searching fusion weights strictly on dev splits to prevent test leakage and reporting paired bootstrap confidence intervals."
+        },
+        {
+          "reqId": "r4",
+          "status": "missing",
+          "factIds": [],
+          "note": "LangChain and LangGraph are listed in skills."
+        },
+        {
+          "reqId": "r5",
+          "status": "missing",
+          "factIds": [],
+          "note": "No hands-on Azure OpenAI or Databricks experience yet, but AWS serverless work maps closely."
+        },
+        {
+          "reqId": "r6",
+          "status": "met",
+          "factIds": [
+            "research.ised.paper"
+          ],
+          "note": "Paper accepted at 14th IEEE ISED 2026."
+        }
+      ],
+      "coverNote": {
+        "paragraphs": [
+          {
+            "text": "I built Evident, a RAG system and evaluation harness that pairs a from-scratch BM25 with dense embeddings served by Strata, my custom C++ vector database.",
+            "factIds": [
+              "evident.hybrid.full",
+              "evident.judge.full",
+              "strata.bench.hft"
+            ]
+          },
+          {
+            "text": "To rigorously measure retrieval, I used an LLM-as-judge evaluation harness with bootstrap confidence intervals, raising evidence-in-context from 43% to 57%.",
+            "factIds": [
+              "evident.judge.full",
+              "evident.bootstrap.q"
+            ]
+          },
+          {
+            "text": "My background also includes co-authoring an IEEE ISED 2026 paper on transformer models, giving me strong fundamentals in Python, PyTorch, and ML systems.",
+            "factIds": [
+              "research.ised.paper.full",
+              "research.ised.paper"
+            ]
+          }
+        ]
+      },
+      "email": {
+        "subject": "Machine Learning Engineer role - Retrieval and RAG",
+        "body": "Hi team, I built Evident, a RAG and hybrid search system backed by Strata, my high-performance C++ vector database. I also created an LLM-as-judge evaluation harness that improved evidence-in-context from 43% to 57% with 98.8% grounded claims, and co-authored a transformer paper accepted at IEEE ISED 2026. I would love to chat about how my experience matches your retrieval needs. Best, Candidate.",
+        "factIds": [
+          "evident.hybrid.full",
+          "evident.judge.full",
+          "strata.bench.hft",
+          "research.ised.paper"
+        ]
+      }
+    },
+    "guard": {
+      "claims": 16,
+      "verified": 16,
+      "blocked": [],
+      "repaired": []
+    },
+    "warnings": [
+      "2 bullet(s) are over 230 characters; the page may overflow."
+    ],
+    "timingsMs": {
+      "analyze": 1883,
+      "compose": 5873,
+      "guard": 17,
+      "repair": 0,
+      "total": 7776
+    }
+  }
+}
