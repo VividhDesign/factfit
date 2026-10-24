@@ -248,3 +248,25 @@ describe("normalize", () => {
     expect(normalizeWords(String.raw`\textbf{Runner-up}, WeMakeDevs $\times$ AWS`)).toBe("runner-up, wemakedevs × aws");
   });
 });
+
+describe("gaps and prefs in prose", () => {
+  const cover = (text: string) =>
+    guardClaim({ where: "email", text, factIds: ["dhuaan.pipeline"] }, profile, [], { gapsOk: true }).map((v) => v.rule);
+
+  it("lets an honest gap name a tool you don't have", () => {
+    expect(cover("No hands-on Azure experience yet, but my AWS Lambda work maps closely.")).toEqual([]);
+    expect(cover("I haven't used Kubernetes in production.")).toEqual([]);
+  });
+  it("still blocks the same tool when it is claimed", () => {
+    expect(cover("I deployed it on Azure and I know Kubernetes.")).toContain("G4");
+  });
+  it("never relaxes bullets", () => {
+    expect(rulesFor("No hands-on Azure experience yet.", ["dhuaan.pipeline"]).rules).toContain("G4");
+  });
+  it("treats prefs as evidence for numbers in a recruiter reply", () => {
+    const rules = (extra?: string) =>
+      guardClaim({ where: "email", text: "My notice period is 30 days.", factIds: ["dhuaan.pipeline"] }, profile, [], { gapsOk: true, extraEvidence: extra }).map((v) => v.rule);
+    expect(rules()).toContain("G2");
+    expect(rules("Notice period: 30 days")).toEqual([]);
+  });
+});

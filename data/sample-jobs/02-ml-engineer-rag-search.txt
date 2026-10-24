@@ -1,0 +1,26 @@
+Machine Learning Engineer, Retrieval and RAG (Remote, India)
+Lumen Search Labs (a fictional company, written for FactFit demos)
+
+About us
+Lumen builds question-answering over private document collections for small legal and finance teams. Our product lives or dies on retrieval quality, so we measure everything.
+
+The role
+You will own the retrieval stack end to end: indexing, hybrid search, reranking and evaluation of generated answers.
+
+Responsibilities
+- Design and tune hybrid retrieval that combines keyword search (BM25) with dense embeddings.
+- Build evaluation harnesses for retrieval (nDCG, recall) and for generated answers (faithfulness, citation quality).
+- Decide, with data, whether a reranker or a bigger model is worth its latency.
+- Run vector search at scale; HNSW and approximate nearest neighbour experience is a big plus.
+- Ship Python services and demos; Streamlit or FastAPI is fine.
+- Write up experiments clearly, with confidence intervals where it matters.
+
+Requirements
+- Strong Python; PyTorch and Hugging Face or Sentence-Transformers experience.
+- Hands-on experience building a RAG system and measuring it.
+- Good statistics sense: you know why a test split must stay untouched.
+- Experience with LangChain or LangGraph is nice to have.
+- Experience with Azure OpenAI or Databricks is nice to have.
+- Published research or a paper is a plus.
+
+Compensation and logistics are discussed after a first conversation.

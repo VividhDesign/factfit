@@ -29,11 +29,18 @@ export interface Claim {
   factIds: string[];
 }
 
+export interface ClaimOptions {
+  /** Extra text that counts as evidence, e.g. the user's own prefs for a recruiter reply. */
+  extraEvidence?: string;
+  /** Prose (cover note, email, match notes): a sentence that admits a gap ("no hands-on Azure experience") may name a tool. */
+  gapsOk?: boolean;
+}
+
 export interface GuardInput {
   entryOrder?: string[];
   bullets: { entryId: string; text: string; factIds: string[] }[];
   paragraphs?: { text: string; factIds: string[] }[];
-  email?: { subject?: string; body: string; factIds: string[] };
+  email?: { subject?: string; body: string; factIds: string[]; extraEvidence?: string };
   skills?: SkillGroup[];
   /** Requirement keywords from the job post; named in a claim, they must be proven (G4). */
   keywords?: string[];
@@ -73,8 +80,12 @@ interface Evidence {
   facts: Fact[];
 }
 
-function buildEvidence(facts: Fact[], profile: Profile): Evidence {
-  const parts: string[] = [];
+/** A sentence that admits a gap rather than claiming a skill. */
+const GAP_SENTENCE =
+  /\b(?:no|little|limited|zero|without)\s+(?:[\w-]+\s+){0,3}?(?:experience|exposure)\b|\bnot yet\b|\bhaven'?t\b|\bhave not\b|\byet to\b|\bnew to\b|\b(?:keen|eager|excited|happy|ready) to learn\b/;
+
+function buildEvidence(facts: Fact[], profile: Profile, extra = ""): Evidence {
+  const parts: string[] = extra ? [normalize(extra)] : [];
   for (const f of facts) {
     parts.push(normalize(f.text));
     if (f.latex) parts.push(normalize(f.latex));
@@ -94,7 +105,7 @@ const uniq = <T>(xs: T[]) => [...new Set(xs)];
 // ---------- one claim ----------
 
 /** Checks G1 to G5 for one claim. G6 is structural and lives in guard(). */
-export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = []): Violation[] {
+export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = [], opts: ClaimOptions = {}): Violation[] {
   const { where } = claim;
   const out: Violation[] = [];
   const v = (rule: Rule, token: string, message: string) => out.push({ where, rule, token, message });
@@ -113,7 +124,7 @@ export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = 
   }
   if (out.length) return out;
 
-  const ev = buildEvidence(facts, profile);
+  const ev = buildEvidence(facts, profile, opts.extraEvidence);
   const text = normalize(claim.text);
   const lower = text.toLowerCase();
 
@@ -135,8 +146,11 @@ export function guardClaim(claim: Claim, profile: Profile, keywords: string[] = 
 
   // G4
   const terms = uniq([...LEXICON, ...keywords.map((k) => k.trim().toLowerCase()).filter(Boolean)]);
-  const supported = `${ev.lower} ${skillsText(profile)}`;
-  const missing = terms.filter((t) => termRegex(t).test(lower) && !termRegex(t).test(supported));
+  // Tags record what a fact proves (e.g. NEON/AVX2 -> SIMD), so they count for tool names only.
+  const tags = facts.flatMap((f) => f.tags).join(" , ").toLowerCase();
+  const supported = `${ev.lower} ${skillsText(profile)} ${tags}`;
+  const asserted = opts.gapsOk ? lower.split(/(?<=[.!?])\s+/).filter((sent) => !GAP_SENTENCE.test(sent)).join(" ") : lower;
+  const missing = terms.filter((t) => termRegex(t).test(asserted) && !termRegex(t).test(supported));
   for (const t of missing.filter((t) => !missing.some((o) => o !== t && o.includes(t)))) {
     v("G4", t, `'${t}': not in your cited facts or skills.`);
   }
@@ -175,7 +189,9 @@ export function guard(input: GuardInput, profile: Profile): GuardResult {
     ...(input.email ? [{ where: "email", text: input.email.body, factIds: input.email.factIds }] : []),
   ];
 
-  const violations: Violation[] = claims.flatMap((c) => guardClaim(c, profile, keywords));
+  const violations: Violation[] = claims.flatMap((c) =>
+    guardClaim(c, profile, keywords, c.where.startsWith("bullet") ? {} : { gapsOk: true, extraEvidence: c.where === "email" ? input.email?.extraEvidence : undefined }),
+  );
 
   // G6
   const entryIds = new Set(profile.entries.map((e) => e.id));

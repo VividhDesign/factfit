@@ -1,0 +1,23 @@
+Software Development Engineer I, Backend Systems (Bengaluru, hybrid)
+Northwind Logistics (a fictional company, written for FactFit demos)
+
+About the team
+We run the routing and tracking platform that moves a few million parcels a day. The Core Systems team owns the services that index, search and serve shipment data with low latency.
+
+What you will do
+- Build and operate backend services in C++ or Python that answer queries in single-digit milliseconds.
+- Improve the performance of our search and indexing layer: profiling, memory layout, concurrency.
+- Design REST APIs and keep them reliable: tests, metrics and clean rollouts.
+- Work with the data team on pipelines that load shipment events into our stores.
+- Write design notes and review code with the rest of the team.
+
+What we are looking for
+- Strong data structures and algorithms; comfortable reasoning about complexity.
+- Experience with C++ or Python in a Linux environment; multithreading is a plus.
+- Familiarity with databases (SQL or NoSQL) and caching, for example Redis or MongoDB.
+- Experience with Docker and Kubernetes is nice to have.
+- Experience on a cloud platform such as AWS is nice to have.
+- Open-source contributions are a plus.
+- Currently pursuing or recently completed a B.Tech / B.E. in Computer Science or a related field.
+
+Location: Bengaluru, India. Start: 2027.

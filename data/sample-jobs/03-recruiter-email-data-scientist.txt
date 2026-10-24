@@ -1,0 +1,21 @@
+Subject: Data Scientist (100% remote) at Brightfield Analytics: quick questions
+
+Hi,
+
+I came across your profile and I think you could be a fit for a Data Scientist role at Brightfield Analytics, a fictional company used here as a demo. The role is 100% remote and open to people based in India.
+
+The team builds forecasting and anomaly-detection models for energy utilities. Day to day you would clean time-series data, train and evaluate models in Python, and present results to non-technical stakeholders. They use Azure Machine Learning and Power BI, plus SQL for most of the data work.
+
+Before I send your details across, could you reply to a few questions?
+
+1. Are you comfortable working fully remote, and which city are you based in?
+2. What is your current notice period, or when could you start?
+3. What is your expected compensation?
+4. Do you have hands-on experience with Azure Machine Learning or Power BI?
+5. Have you worked on time-series forecasting? A line or two on a project would help.
+
+Please reply by Friday so I can submit your profile this week.
+
+Thanks,
+Meera
+Talent Partner, Brightfield Analytics
